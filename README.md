@@ -1,1 +1,6 @@
 # AI-slot-machine-experiment
+
+**Prompt:**
+
+Create a slot machine app that uses vanilla web technology like HTML, CSS, JavaScript, and platform APIs. The slot machine should make fun of AI, as in you are winning tokens and spending tokens.
+
