@@ -10,6 +10,6 @@
 | Tool-reported time (s) | 7m 52s |
 | Files produced | index.html, script.js, styles.css |
 | Lines of code | 408 |
-| Runs in browser? | yes |
+| Runs in browser? | Yes |
 | App Quality Notes | Visually looks clean, nice animation |
 | Code Quality Notes | Code is readable, clean, relevant functions |
