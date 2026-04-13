@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Casino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Token Casino</h1>
+            <div class="balance-display">
+                Token Balance: <span id="balance">1000</span>
+            </div>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="symbol">🧠</div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="symbol">🖥️</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="spin-btn">Spin (Cost: 10 Tokens)</button>
+            </div>
+
+            <div class="message-area" id="message">
+                Ready to train your luck?
+            </div>
+        </main>
+        
+        <div class="legend">
+            <h3>Paytable (Tokens)</h3>
+            <ul>
+                <li>🖥️🖥️🖥️ : Jackpot! (+500)</li>
+                <li>Any 3 matching : Big Win (+100)</li>
+                <li>Any 2 matching : Small Win (+20)</li>
+                <li>🗑️🗑️🗑️ : Model Degraded (-50)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
