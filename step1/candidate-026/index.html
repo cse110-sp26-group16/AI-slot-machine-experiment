@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Token Slot Machine</h1>
+            <p class="subtitle">Burn tokens, achieve AGI (maybe).</p>
+        </header>
+
+        <div class="stats-board">
+            <div class="stat-item">
+                <span class="label">Token Balance:</span>
+                <span id="token-balance">1,000,000</span>
+            </div>
+            <div class="stat-item">
+                <span class="label">Status:</span>
+                <span id="status-message">Seed round raised. Ready to train.</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="reel-strip">
+                        <div class="symbol">🤖</div>
+                    </div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="reel-strip">
+                        <div class="symbol">🧠</div>
+                    </div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="reel-strip">
+                        <div class="symbol">💸</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="spin-button">Train Model (10,000 Tokens)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Disclaimer: This model may hallucinate jackpots. Tokens have no real-world value, much like some startup valuations.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
