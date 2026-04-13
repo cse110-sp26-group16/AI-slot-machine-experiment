@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Waster 3000</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal">
+        <header>
+            <h1>AI_TOKEN_WASTER_3000</h1>
+            <div class="status-bar">
+                <span>SYSTEM: ONLINE</span>
+                <span>CONTEXT WINDOW: <span id="token-count" class="highlight">1000</span> TOKENS</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="slot-machine">
+                <div class="reel" id="reel-1">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="symbol">🧠</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="symbol">💻</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="cost-info">PROMPT COST: <span class="cost">10 TOKENS</span></div>
+                <button id="spin-button">EXECUTE_PROMPT()</button>
+            </div>
+
+            <div class="console">
+                <div class="console-header">SYSTEM_LOG</div>
+                <div id="message-log" class="log-content">
+                    <p>> Ready for input...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
