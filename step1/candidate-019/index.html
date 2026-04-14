@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI HYPE GENERATOR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI HYPE GENERATOR</h1>
+            <div class="stats">
+                <div class="stat-box">Tokens: <span id="token-count">100</span></div>
+                <div class="stat-box">GPU Debt: $<span id="debt-count">0</span></div>
+            </div>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1">
+                    <div class="reel-content">🤖</div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-content">💰</div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-content">🚀</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="spin-button">BURN TOKENS (Spin)</button>
+            </div>
+        </main>
+
+        <section class="log-container">
+            <div class="log-header">SYSTEM_LOG_v1.0.42</div>
+            <div class="log" id="event-log">
+                <p>> Welcome to the future. Insert hype to continue.</p>
+                <p>> Initializing neural weights... [OK]</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Warning: Outcomes may contain hallucinations. All wins are synthetic.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
