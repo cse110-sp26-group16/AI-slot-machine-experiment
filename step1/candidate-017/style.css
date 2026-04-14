@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #050505;
+    --panel-color: #1a1a1a;
+    --accent-color: #00ff9d;
+    --text-color: #e0e0e0;
+    --danger-color: #ff3e3e;
+    --neon-shadow: 0 0 10px rgba(0, 255, 157, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+header h1 span {
+    color: var(--accent-color);
+    text-shadow: var(--neon-shadow);
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+}
+
+/* Ticker */
+.ticker-wrap {
+    background: #111;
+    border: 1px solid #333;
+    margin: 20px 0;
+    padding: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.ticker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 15s linear infinite;
+    color: var(--accent-color);
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-200%, 0, 0); }
+}
+
+/* Slot Machine */
+.slot-machine {
+    background: var(--panel-color);
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.reels-container {
+    display: flex;
+    justify-content: space-around;
+    background: #000;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+}
+
+.reel {
+    width: 30%;
+    height: 100px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    overflow: hidden;
+}
+
+.reel-strip {
+    transition: transform 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.reel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.6) 0%,
+        transparent 20%,
+        transparent 80%,
+        rgba(0,0,0,0.6) 100%
+    );
+    pointer-events: none;
+}
+
+/* Controls */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.stat-box {
+    flex: 1;
+    text-align: center;
+}
+
+.stat-box label {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-bottom: 5px;
+}
+
+.stat-box span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: var(--accent-color);
+}
+
+.btn-spin {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--neon-shadow);
+}
+
+.btn-spin:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.btn-spin:active {
+    transform: scale(0.98);
+}
+
+.btn-spin:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.75rem;
+    opacity: 0.4;
+}
+
+/* Animations */
+@keyframes spin-shake {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+    75% { transform: translateY(-2px); }
+    100% { transform: translateY(0); }
+}
+
+.spinning {
+    animation: spin-shake 0.1s infinite;
+}

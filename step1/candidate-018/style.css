@@ -1,0 +1,227 @@
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #39ff14;
+    --accent-color: #00ffcc;
+    --warn-color: #ff3e3e;
+    --panel-color: #1a1a1a;
+    --border-style: 2px solid var(--text-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.server-rack {
+    width: 100%;
+    max-width: 600px;
+    border: var(--border-style);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    padding: 20px;
+    background: linear-gradient(180deg, #151515 0%, #0a0a0a 100%);
+}
+
+header {
+    border-bottom: var(--border-style);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.status-indicators {
+    font-size: 0.8rem;
+}
+
+.indicator {
+    margin-left: 10px;
+    opacity: 0.8;
+}
+
+.machine {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reels-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    height: 150px;
+    background: #000;
+    border: var(--border-style);
+    padding: 10px;
+    overflow: hidden;
+}
+
+.reel {
+    background: var(--panel-color);
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.reel-strip {
+    display: flex;
+    flex-direction: column;
+    transition: transform 3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    will-change: transform;
+}
+
+.symbol {
+    height: 128px; /* Adjusted to fit the container padding */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    padding: 20px 0;
+}
+
+.display-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-color);
+    padding: 15px;
+    border: 1px solid #444;
+}
+
+.credits label {
+    display: block;
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+}
+
+#balance {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.message-display {
+    text-align: right;
+    font-size: 0.9rem;
+    max-width: 50%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.bet-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bet-amount {
+    font-size: 1.2rem;
+}
+
+.btn {
+    background: transparent;
+    border: var(--border-style);
+    color: var(--text-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+.btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-secondary {
+    padding: 10px 15px;
+}
+
+.terminal-container {
+    margin-top: 30px;
+    border-top: var(--border-style);
+    padding-top: 10px;
+}
+
+.terminal-header {
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+    opacity: 0.6;
+}
+
+.terminal {
+    height: 100px;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    padding: 5px;
+}
+
+.log-line {
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.log-line.error {
+    color: var(--warn-color);
+}
+
+.log-line.success {
+    color: var(--accent-color);
+}
+
+/* Animations */
+@keyframes flicker {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; }
+    100% { opacity: 0.9; }
+}
+
+.server-rack {
+    animation: flicker 4s infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-color);
+}
