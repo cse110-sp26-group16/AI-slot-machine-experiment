@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Token Generator 9000</h1>
+            <div class="stats">
+                <p>Tokens: <span id="token-count">1000</span> <br><span class="cost">(Cost to prompt: 50 tokens)</span></p>
+                <p>Context Used: <span id="context-window">0%</span></p>
+            </div>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1"><div class="reel-content">❓</div></div>
+                <div class="reel" id="reel2"><div class="reel-content">❓</div></div>
+                <div class="reel" id="reel3"><div class="reel-content">❓</div></div>
+            </div>
+
+            <div class="controls">
+                <button id="spin-btn">Generate Response</button>
+            </div>
+
+            <div class="message-board">
+                <p id="message">Awaiting prompt...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Warning: AI may hallucinate. Tokens are non-refundable. API usage is monitored.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
