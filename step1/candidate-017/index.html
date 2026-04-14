@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>PROMPT<span>ENGINEERING</span></h1>
+            <p class="subtitle">Burning GPUs for "AGI"</p>
+        </header>
+
+        <div class="ticker-wrap">
+            <div class="ticker" id="news-ticker">
+                BREAKING: AI model successfully mimics human procrastination...
+            </div>
+        </div>
+
+        <main class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="reel-strip">🤖</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="reel-strip">⚡</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="reel-strip">💰</div>
+                </div>
+                <div class="reel-overlay"></div>
+            </div>
+
+            <div class="controls">
+                <div class="stats">
+                    <div class="stat-box">
+                        <label>COMPUTE CREDITS</label>
+                        <span id="credits">100</span>
+                    </div>
+                    <div class="stat-box">
+                        <label>HYPE TOKENS</label>
+                        <span id="hype-tokens">0</span>
+                    </div>
+                </div>
+                
+                <button id="spin-button" class="btn-spin">OPTIMIZE PROMPT</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with 0% actual AI. Fully hallucinated.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
