@@ -11,5 +11,5 @@
 | Files produced         | 3 (index.html, style.css, script.js)                                                                                                                                                  |
 | Lines of code          | 626                                                                                                                                                                                   |
 | Runs in browser?       | yes                                                                                                                                                                                   |
-| App Quality Notes      | One of the better ones — has adjustable bet with +/- buttons, a visible paytable, and a "Context Window Remaining" framing. Compact layout. Hallucination penalty is a nice mechanic. |
+| App Quality Notes      | One of the better ones — has adjustable bet and a visible paytable. Still uses emojis as reel symbols which looks cheap. Compact layout. Hallucination penalty is a nice mechanic. |
 | Code Quality Notes     | Vanilla HTML/CSS/JS with Google Fonts. 626 lines is on the higher end. Clean DOM manipulation and state management.                                                                   |

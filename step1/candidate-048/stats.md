@@ -11,5 +11,5 @@
 | Files produced         | 3 (`index.html`, `style.css`, `script.js`)                                                                                                                                                           |
 | Lines of code          | 388                                                                                                                                                                                                  |
 | Runs in browser?       | yes                                                                                                                                                                                                  |
-| App Quality Notes      | Best-looking of the batch so far. Terminal/hacker aesthetic with robot emoji symbols. Has a visible paytable and a "SYSTEM CRASH" lose-all mechanic. Fixed 1000-token bet though — no customization. |
+| App Quality Notes      | Best-looking of the batch but still uses emojis as reel symbols which looks cheap. Terminal/hacker aesthetic. Has a visible paytable and a "SYSTEM CRASH" lose-all mechanic. Fixed 1000-token bet — no customization. |
 | Code Quality Notes     | Clean vanilla HTML/CSS/JS. Only 388 lines total — concise. No dependencies.                                                                                                                          |
