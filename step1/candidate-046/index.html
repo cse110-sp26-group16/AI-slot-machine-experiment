@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Context Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Token Generator</h1>
+            <div class="balance-display">
+                <span>Context Tokens:</span>
+                <span id="balance">1000</span>
+            </div>
+            <div class="cost-display">Cost per prompt: 50 Tokens</div>
+        </header>
+
+        <div class="slot-machine">
+            <div class="reel-container">
+                <div class="reel" id="reel1">
+                    <div class="symbol">🧠</div>
+                </div>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel2">
+                    <div class="symbol">🧠</div>
+                </div>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel3">
+                    <div class="symbol">🧠</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="spinButton">Generate Response</button>
+        </div>
+
+        <div class="status">
+            <p id="statusMessage">System Ready. Awaiting Prompt.</p>
+        </div>
+        
+        <div class="legend">
+            <h3>Payouts</h3>
+            <ul>
+                <li>3x 🚀 (AGI) = 1000 Tokens</li>
+                <li>3x ✨ (Sparkles) = 500 Tokens</li>
+                <li>3x 🧠 (Neural Net) = 200 Tokens</li>
+                <li>3x 🤖 (AI Bot) = 100 Tokens</li>
+                <li>3x 📉 or 💸 = SYSTEM CRASH (Lose all)</li>
+                <li>Any 2 matching = Refund (50 Tokens)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

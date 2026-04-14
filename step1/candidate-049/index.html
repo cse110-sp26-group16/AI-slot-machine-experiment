@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Compute Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Token Allocator</h1>
+            <div class="balance-container">
+                <span>Compute Tokens:</span>
+                <span id="balance">1000</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="slot-machine">
+                <div class="reels-container">
+                    <div class="reel" id="reel1">
+                        <div class="reel-strip"></div>
+                    </div>
+                    <div class="reel" id="reel2">
+                        <div class="reel-strip"></div>
+                    </div>
+                    <div class="reel" id="reel3">
+                        <div class="reel-strip"></div>
+                    </div>
+                </div>
+                <div class="payline"></div>
+            </div>
+
+            <div class="controls">
+                <button id="spinButton">Generate Response<br><small>(Cost: 10 Tokens)</small></button>
+            </div>
+
+            <div class="message-container">
+                <p id="message">Awaiting prompt...</p>
+            </div>
+            
+            <div class="payout-table">
+                <h3>Payouts</h3>
+                <ul>
+                    <li>🧠🧠🧠 AGI Achieved: +500</li>
+                    <li>🚀🚀🚀 Peak Hype: +200</li>
+                    <li>🤖🤖🤖 Basic Chatbot: +50</li>
+                    <li>💾💾💾 GPU Acquired: +20</li>
+                    <li>⚠️⚠️⚠️ Rate Limited: -50 Penalty!</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

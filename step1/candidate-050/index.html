@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Slot Machine: Context Casino</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="casino-container">
+        <header>
+            <h1>🎰 Context Casino 🎰</h1>
+            <p class="subtitle">Will you reach AGI or run out of context?</p>
+        </header>
+
+        <main class="slot-machine">
+            <div class="status-bar">
+                <div class="balance-display">
+                    <span class="label">Context Window Remaining:</span>
+                    <span id="balance" class="value">4096</span> <span class="unit">Tokens</span>
+                </div>
+                <div class="message-display" id="message">
+                    Insert prompt to begin...
+                </div>
+            </div>
+
+            <div class="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-strip"></div>
+                </div>
+                <!-- Win Line overlay -->
+                <div class="win-line"></div>
+            </div>
+
+            <div class="controls">
+                <div class="bet-control">
+                    <label for="bet-amount">Tokens per prompt:</label>
+                    <div class="bet-input-group">
+                        <button id="bet-down" class="btn-secondary">-</button>
+                        <input type="number" id="bet-amount" value="128" min="16" max="1024" step="16" readonly>
+                        <button id="bet-up" class="btn-secondary">+</button>
+                    </div>
+                </div>
+                <button id="generate-btn" class="btn-primary">Generate ⚡️</button>
+            </div>
+            
+            <div class="paytable">
+                <h3>System Prompt (Paytable)</h3>
+                <ul>
+                    <li>🧠🧠🧠 (AGI Achieved) = Bet x 50</li>
+                    <li>💰💰💰 (VC Funding) = Bet x 20</li>
+                    <li>🤖🤖🤖 (Perfect Model) = Bet x 10</li>
+                    <li>💬💬💬 (Good Prompt) = Bet x 5</li>
+                    <li>⚠️ (Hallucination) anywhere = Lose 50% of Bet</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

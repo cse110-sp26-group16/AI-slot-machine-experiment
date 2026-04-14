@@ -1,0 +1,208 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #00ff00;
+    --dim-text: #00aa00;
+    --alert-color: #ff3333;
+    --highlight: #00ffff;
+    --font-stack: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.terminal-container {
+    background-color: #0a0a0a;
+    border: 2px solid var(--dim-text);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), inset 0 0 10px rgba(0, 255, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 5px var(--text-color);
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--dim-text);
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px dashed var(--dim-text);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.slot-machine {
+    position: relative;
+    border: 2px solid var(--text-color);
+    padding: 20px;
+    background-color: #000;
+    margin-bottom: 20px;
+}
+
+.reels-container {
+    display: flex;
+    justify-content: space-around;
+    height: 120px;
+    overflow: hidden;
+}
+
+.reel {
+    width: 30%;
+    border: 1px solid var(--dim-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 4rem;
+    background: #020202;
+    position: relative;
+}
+
+.symbol-container {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+/* Simulate terminal scanline */
+.overlay-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 0, 0),
+        rgba(0, 255, 0, 0.1) 50%,
+        rgba(0, 255, 0, 0)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanline 5s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes scanline {
+    0% { background-position: 0 -100vh; }
+    100% { background-position: 0 100vh; }
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.terminal-btn {
+    background-color: transparent;
+    color: var(--highlight);
+    border: 1px solid var(--highlight);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: var(--font-stack);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.terminal-btn:hover {
+    background-color: var(--highlight);
+    color: #000;
+    box-shadow: 0 0 10px var(--highlight);
+}
+
+.terminal-btn:disabled {
+    color: #555;
+    border-color: #555;
+    cursor: not-allowed;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.status-log {
+    border: 1px solid var(--dim-text);
+    padding: 10px;
+    min-height: 80px;
+    background-color: #020202;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.log-header {
+    color: var(--dim-text);
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+#log-content {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.error-text {
+    color: var(--alert-color);
+}
+
+.legend {
+    font-size: 0.8rem;
+    color: var(--dim-text);
+}
+
+.legend h3 {
+    margin: 0 0 5px 0;
+}
+
+.legend ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+/* Animations for spinning */
+@keyframes blur-spin {
+    0% { filter: blur(0px); transform: translateY(0); }
+    50% { filter: blur(4px); transform: translateY(-20px); }
+    100% { filter: blur(0px); transform: translateY(0); }
+}
+
+.spinning .symbol-container {
+    animation: blur-spin 0.1s infinite linear;
+}
+
+@keyframes typing {
+  from { border-right-color: var(--text-color); }
+  to { border-right-color: transparent; }
+}
+
+.typing-cursor {
+    border-right: 8px solid var(--text-color);
+    animation: typing 0.5s step-end infinite;
+}
