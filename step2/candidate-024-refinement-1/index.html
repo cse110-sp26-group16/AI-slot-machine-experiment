@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Burner v1.0 (Beta)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Token Burner <span>v1.0 (BETA)</span></h1>
+            <p class="subtitle">Burning GPUs for your entertainment</p>
+            <button id="paytable-btn" class="secondary-btn">View Payouts</button>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels-container" id="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+
+            <div class="controls">
+                <div class="display-panel">
+                    <div class="stat">
+                        <label>COMPUTE CREDITS</label>
+                        <div id="compute-credits" class="value">500.00</div>
+                    </div>
+                    <div class="stat">
+                        <label>CONTEXT WINDOW (WIN)</label>
+                        <div id="context-window" class="value">0</div>
+                    </div>
+                </div>
+
+                <div class="action-area">
+                    <div class="bet-control">
+                        <label>BET AMOUNT:</label>
+                        <button id="bet-down" class="bet-btn">-</button>
+                        <span id="current-bet">25</span>
+                        <button id="bet-up" class="bet-btn">+</button>
+                    </div>
+                    <button id="spin-btn" class="primary-btn">RUN INFERENCE</button>
+                    <button id="reset-btn" class="danger-btn hidden">RESET TOKENS</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="terminal-container">
+            <div class="terminal-header">TERMINAL LOG [RUNNING]</div>
+            <div id="terminal-log" class="terminal-body">
+                <div class="log-entry system">> Initializing weights...</div>
+                <div class="log-entry system">> Loading safety filters...</div>
+                <div class="log-entry system">> Ready for inference.</div>
+            </div>
+        </aside>
+
+        <footer>
+            <p>&copy; 2026 AGI-Hypetrain Corp. | "Your context is our currency."</p>
+        </footer>
+    </div>
+
+    <!-- Paytable Modal -->
+    <div id="paytable-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Payout Information</h2>
+            <div id="paytable-grid"></div>
+            <p class="paytable-note">* All payouts multiplied by (Bet / 10)</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

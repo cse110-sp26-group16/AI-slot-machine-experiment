@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Token Grinder - AI Casino</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="terminal-container" id="main-container">
+      <header>
+        <h1>THE TOKEN GRINDER</h1>
+        <p class="subtitle">v2.0 // NEURAL CASINO EDITION</p>
+        <button id="payouts-btn">INFO / PAYOUTS</button>
+      </header>
+
+      <div class="stats-panel">
+        <div class="stat">
+          <span class="label">TOKENS:</span>
+          <span id="balance" class="value">1000</span>
+        </div>
+        <div class="stat bet-control">
+          <span class="label">BET:</span>
+          <button id="bet-minus" class="bet-btn">-</button>
+          <span id="bet-amount" class="value">50</span>
+          <button id="bet-plus" class="bet-btn">+</button>
+        </div>
+      </div>
+
+      <div class="slot-machine">
+        <div class="reels-container">
+          <div class="reel"><div class="reel-inner" id="reel1"></div></div>
+          <div class="reel"><div class="reel-inner" id="reel2"></div></div>
+          <div class="reel"><div class="reel-inner" id="reel3"></div></div>
+        </div>
+        <div class="scanline"></div>
+      </div>
+
+      <div class="controls">
+        <button id="spin-button">RUN INFERENCE (SPIN)</button>
+        <button id="reset-button" class="hidden">OUT OF TOKENS. RESET?</button>
+      </div>
+
+      <div class="status-panel">
+        <div class="terminal-output" id="status-message">
+          Ready for computation...
+        </div>
+      </div>
+
+      <footer>
+        <p>GPU TEMP: 42°C | FAN SPEED: 100% | MODEL: DEGEN-7B</p>
+      </footer>
+
+      <div id="payouts-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>PAYOUTS</h2>
+          <div id="payouts-list"></div>
+          <button id="close-payouts">CLOSE</button>
+        </div>
+      </div>
+
+      <div id="coin-shower"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

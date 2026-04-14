@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="game-container">
+        <header>
+            <h1 class="neon-text">AI Token Casino</h1>
+            <div class="budget">Compute Budget: <span id="token-balance">1000</span> Tokens</div>
+        </header>
+        
+        <main class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1"><div class="reel-strip"></div></div>
+                <div class="reel" id="reel-2"><div class="reel-strip"></div></div>
+                <div class="reel" id="reel-3"><div class="reel-strip"></div></div>
+                <div class="payline"></div>
+            </div>
+            
+            <div class="bet-controls">
+                <button id="decrease-bet" class="bet-btn">-</button>
+                <div class="bet-display">Bet: <span id="bet-amount">10</span></div>
+                <button id="increase-bet" class="bet-btn">+</button>
+            </div>
+
+            <div class="controls">
+                <button id="spin-btn" class="action-btn spin-btn">Generate</button>
+                <button id="reset-btn" class="action-btn reset-btn hidden">Reset Budget</button>
+                <button id="info-btn" class="action-btn info-btn">Payout Info</button>
+            </div>
+            
+            <div class="message-board">
+                <p id="message">System Ready. Insert prompt to begin.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Payout Info -->
+    <div id="payout-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="neon-text-small">Paytable (Multipliers)</h2>
+            <ul class="modal-paytable">
+                <li>🤖🤖🤖 AGI Achieved: 50x Bet</li>
+                <li>🧠🧠🧠 Infinite Compute: 20x Bet</li>
+                <li>💬💬💬 Perfect Prompt: 10x Bet</li>
+                <li>💸💸💸 VC Funding: 5x Bet</li>
+                <li>🐛🐛🐛 Hallucination Loop: -5x Bet (Penalty)</li>
+                <li>Any two matching (excluding bugs): 2x Bet</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Refine the given slot machine app so it includes casino-like visuals and smooth animations. 
+There should be information of all the payouts visible when the click of a button.
+The user should be able to adjust the bet amount, and when all tokens have been used, there
+should be an option to reset back to the original amount. There should be animations emphasizing losses 
+and larger animations celebrating wins. Smaller wins should be less flashy animations than larger wins. 
+There should be more jokes making fun of AI that align with the outcome of the slot machine. 
+Add relevant sound effects to mimic a casino. 

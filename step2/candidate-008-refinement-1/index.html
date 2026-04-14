@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Gacha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="casino-container" id="casino-container">
+        <header class="casino-header">
+            <h1>🎰 Generative Slot Machine 🎰</h1>
+            <p class="subtitle">Compute is expensive. Spin to win (or burn) tokens!</p>
+            <button id="payout-btn" class="btn small-btn">Payout Info</button>
+        </header>
+
+        <main class="machine">
+            <div class="dashboard">
+                <div class="balance-display">
+                    <span>Balance:</span>
+                    <span id="token-balance">10000</span>
+                </div>
+                <div class="bet-control">
+                    <label for="bet-amount">Bet:</label>
+                    <select id="bet-amount">
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100" selected>100</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="reels-container" id="reels-container">
+                <div class="reel-window"><div class="reel" id="reel-1">🤖</div></div>
+                <div class="reel-window"><div class="reel" id="reel-2">🧠</div></div>
+                <div class="reel-window"><div class="reel" id="reel-3">🖥️</div></div>
+            </div>
+
+            <div class="controls">
+                <button id="spin-button" class="btn spin-btn">SPIN</button>
+                <button id="reset-button" class="btn reset-btn hidden">Reset Tokens</button>
+            </div>
+
+            <div class="message-board" id="message-board">
+                Ready to waste compute?
+            </div>
+        </main>
+    </div>
+
+    <!-- Payout Modal -->
+    <div id="payout-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Payout Table (x Bet)</h2>
+            <table>
+                <tr><th>Symbol</th><th>Name</th><th>3 of a Kind</th><th>2 of a Kind</th></tr>
+                <tr><td>✨</td><td>Magic</td><td>x500</td><td>x10</td></tr>
+                <tr><td>📈</td><td>Stonks</td><td>x100</td><td>x5</td></tr>
+                <tr><td>🖥️</td><td>GPU</td><td>x50</td><td>x2.5</td></tr>
+                <tr><td>🧠</td><td>Brain</td><td>x20</td><td>x1</td></tr>
+                <tr><td>🤖</td><td>Bot</td><td>x10</td><td>x0.5</td></tr>
+                <tr><td>🗑️</td><td>Trash</td><td>x2</td><td>x0.1</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

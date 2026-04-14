@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Casino Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="casino-container">
+        <header>
+            <h1 class="neon-text">Generative Slots</h1>
+            <p>Spend your context, hallucinate some tokens!</p>
+        </header>
+
+        <div class="top-controls">
+            <button id="paytable-btn" class="control-btn">ℹ️ Paytable</button>
+        </div>
+
+        <div class="stats neon-border">
+            <div class="balance">Tokens: <span id="token-count">1000</span></div>
+            <div class="bet-controls">
+                <button id="decrease-bet" class="bet-btn">-</button>
+                <span class="cost">Bet: <span id="spin-cost">10</span></span>
+                <button id="increase-bet" class="bet-btn">+</button>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="symbol">🧠</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="symbol">💸</div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="spin-btn" class="action-btn">GENERATE (Spin)</button>
+                <button id="reset-btn" class="action-btn hidden">RESET TOKENS</button>
+            </div>
+        </div>
+
+        <div class="message-board">
+            <p id="message">System prompt loaded. Ready to consume tokens.</p>
+        </div>
+    </div>
+
+    <!-- Paytable Modal -->
+    <div id="paytable-modal" class="modal hidden">
+        <div class="modal-content neon-border">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Payouts (per 10 token bet)</h2>
+            <div id="paytable-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
