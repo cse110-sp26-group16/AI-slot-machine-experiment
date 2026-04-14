@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Casino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Generative AI Token Casino</h1>
+            <p>Spend your context window wisely.</p>
+        </header>
+
+        <div class="dashboard">
+            <div class="balance-container">
+                <span class="label">Tokens Left:</span>
+                <span id="balance">10000</span>
+            </div>
+            <div class="cost-container">
+                <span class="label">Cost per Prompt:</span>
+                <span>100 Tokens</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reel-container">
+                <div class="reel" id="reel1">
+                    <div class="symbol">🤖</div>
+                </div>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel2">
+                    <div class="symbol">🧠</div>
+                </div>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel3">
+                    <div class="symbol">💸</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-button" class="generate-btn">Generate (Spin)</button>
+        </div>
+
+        <div class="message-board">
+            <p id="message">Waiting for prompt...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
