@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Casino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎰 AI Compute Casino 🎰</h1>
+            <p class="subtitle">Burn tokens, hallucinate wins!</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-box">
+                <span class="label">Tokens Remaining:</span>
+                <span id="token-count" class="value">10000</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">Context Window:</span>
+                <span id="context-size" class="value">32K</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1"><div class="symbol">🧠</div></div>
+                <div class="reel" id="reel2"><div class="symbol">🤖</div></div>
+                <div class="reel" id="reel3"><div class="symbol">⚡</div></div>
+            </div>
+            
+            <div class="controls">
+                <div class="bet-control">
+                    <label for="bet-input">Bet (Tokens):</label>
+                    <input type="number" id="bet-input" value="100" min="10" max="1000" step="10">
+                </div>
+                <button id="spin-button">Generate (Spin)</button>
+            </div>
+        </div>
+
+        <div class="message-area">
+            <p id="message">Insert prompt to begin...</p>
+        </div>
+
+        <div class="legend">
+            <h3>Paytable (Match 3)</h3>
+            <ul>
+                <li>🤖 AGI (Jackpot) = 50x</li>
+                <li>🧠 Big Brain = 20x</li>
+                <li>⚡ H100 GPU = 10x</li>
+                <li>📄 Training Data = 5x</li>
+                <li>🗑️ Garbage Collection = 2x</li>
+                <li>💀 Hallucination = -Bet!</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

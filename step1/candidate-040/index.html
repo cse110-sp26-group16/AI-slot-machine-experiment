@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎰 The AGI Casino 🎰</h1>
+            <p class="subtitle">Spend your compute wisely.</p>
+        </header>
+
+        <div class="stats">
+            <div class="token-display">
+                <span>Tokens Available:</span>
+                <span id="token-balance">1000</span>
+            </div>
+            <div class="message-display" id="message">
+                Ready to burn some compute?
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reel" id="reel-1">🤖</div>
+            <div class="reel" id="reel-2">🤖</div>
+            <div class="reel" id="reel-3">🤖</div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-btn" class="primary-btn">Generate (Cost: 10 Tokens)</button>
+            <button id="buy-btn" class="secondary-btn">Beg VC for Funding (+500 Tokens)</button>
+        </div>
+
+        <div class="paytable">
+            <h3>Reward Function</h3>
+            <ul>
+                <li>🚀 🚀 🚀 AGI Achieved: +1000 Tokens</li>
+                <li>🧠 🧠 🧠 Perfect Alignment: +500 Tokens</li>
+                <li>💸 💸 💸 Nvidia Earnings Call: +250 Tokens</li>
+                <li>Any two matching: +20 Tokens</li>
+                <li>📉 📉 📉 GPU Shortage: -50 Tokens</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

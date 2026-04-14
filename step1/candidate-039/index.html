@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Grinder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎰 AI Token Grinder 🎰</h1>
+            <p class="subtitle">Will you reach AGI or run out of context?</p>
+        </header>
+
+        <div class="stats">
+            <div class="balance">
+                Context Window: <span id="balance">1000</span> Tokens
+            </div>
+            <div class="cost">Cost per query: 10 Tokens</div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reel" id="reel1">🤖</div>
+            <div class="reel" id="reel2">🧠</div>
+            <div class="reel" id="reel3">💾</div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-button">Generate Output (Spin)</button>
+        </div>
+
+        <div class="message-area">
+            <p id="message">Insert tokens to prompt the model.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
