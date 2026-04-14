@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Token Spinner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Stochastic Parrot Spinner</h1>
+            <p>Spend tokens. Win nothing. Hail AI.</p>
+        </header>
+        
+        <div class="stats-board">
+            <div class="stat">
+                <span class="label">Tokens Remaining:</span>
+                <span id="token-balance" class="value">1000</span>
+            </div>
+            <div class="stat">
+                <span class="label">Cost per Prompt:</span>
+                <span class="value">10</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="symbol">🤖</div>
+                </div>
+            </div>
+            <div class="machine-overlay"></div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-button" class="btn-primary">Generate (10 Tokens)</button>
+        </div>
+
+        <div class="message-board">
+            <p id="message">Awaiting input prompt...</p>
+        </div>
+        
+        <div class="legend">
+            <h3>Paytable:</h3>
+            <ul>
+                <li>💻💻💻 3x GPU = +500 Tokens</li>
+                <li>🔑🔑🔑 3x API Key = +200 Tokens</li>
+                <li>🧠🧠🧠 3x Context = +50 Tokens</li>
+                <li>Any 🤪 = Hallucination Penalty! (-50 Tokens)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
