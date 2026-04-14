@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Casino - AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎰 LLM Casino 🎰</h1>
+        <div class="status-board">
+            <p>Token Balance: <span id="balance">10000</span> 🪙</p>
+            <p id="message">Insert tokens to generate prompt...</p>
+        </div>
+        
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1">🤖</div>
+                <div class="reel" id="reel2">🤖</div>
+                <div class="reel" id="reel3">🤖</div>
+            </div>
+            <div class="controls">
+                <div class="bet-controls">
+                    <button id="bet-down">-</button>
+                    <span id="bet-amount">100</span> Tokens/Spin
+                    <button id="bet-up">+</button>
+                </div>
+                <button id="spin-btn" class="spin-button">GENERATE (SPIN)</button>
+            </div>
+        </div>
+        
+        <div class="paytable">
+            <h3>Paytable</h3>
+            <ul>
+                <li>💸💸💸 Jackpot: 50x</li>
+                <li>🧠🧠🧠 AGI Achieved: 20x</li>
+                <li>🤖🤖🤖 Standard Output: 10x</li>
+                <li>💻💻💻 Compute Heavy: 5x</li>
+                <li>📉📉📉 Context Collapse: 0x (Lose Bet)</li>
+                <li>♻️♻️♻️ Hallucination: 0x (Lose Bet)</li>
+                <li>Any mixed: Safety Filtered (No payout)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
