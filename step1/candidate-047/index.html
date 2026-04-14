@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Generative Slot Machine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Generative Slot Machine</h1>
+            <div class="balance-container">
+                <h2>API Quota: <span id="balance">10000</span> Tokens</h2>
+            </div>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="reel-content">🧠</div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-content">🧠</div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-content">🧠</div>
+                </div>
+                <div class="win-line"></div>
+            </div>
+
+            <div class="controls">
+                <div class="bet-container">
+                    <label for="bet-amount">Temperature (Bet):</label>
+                    <input type="number" id="bet-amount" value="500" min="10" step="10">
+                </div>
+                <button id="spin-button">Generate Response (Spin)</button>
+                <button id="reset-button" class="hidden">Upgrade to Pro (Reset)</button>
+            </div>
+        </main>
+
+        <section class="console-container">
+            <div class="console-header">Status Log</div>
+            <div class="console-log" id="console-log">
+                <p>> System initialized. API quota loaded.</p>
+                <p>> Ready for prompt.</p>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
