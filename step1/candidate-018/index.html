@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hallucination Engine | AI Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="server-rack">
+        <header>
+            <h1>THE HALLUCINATION ENGINE</h1>
+            <div class="status-indicators">
+                <span class="indicator" id="gpu-temp">GPU: 42°C</span>
+                <span class="indicator" id="vram-usage">VRAM: 0/80GB</span>
+            </div>
+        </header>
+
+        <main class="machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="reel-strip" id="strip-1"></div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="reel-strip" id="strip-2"></div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="reel-strip" id="strip-3"></div>
+                </div>
+            </div>
+
+            <div class="display-panel">
+                <div class="credits">
+                    <label>COMPUTE CREDITS (GPU-H)</label>
+                    <span id="balance">1000</span>
+                </div>
+                <div class="message-display" id="message">READY FOR INFERENCE...</div>
+            </div>
+
+            <div class="controls">
+                <div class="bet-control">
+                    <button class="btn btn-secondary" id="bet-dec">-</button>
+                    <div class="bet-amount">BET: <span id="current-bet">10</span></div>
+                    <button class="btn btn-secondary" id="bet-inc">+</button>
+                </div>
+                <button class="btn btn-primary" id="spin-btn">SPIN (GENERATE)</button>
+            </div>
+        </main>
+
+        <section class="terminal-container">
+            <div class="terminal-header">SYSTEM LOGS</div>
+            <div class="terminal" id="log-display">
+                <div class="log-line">> Initializing transformer weights...</div>
+                <div class="log-line">> Loading H100 kernels...</div>
+                <div class="log-line">> Ready.</div>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
