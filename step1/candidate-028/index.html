@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Generative AI Slot Machine</h1>
+            <p>Spend your context window tokens!</p>
+        </header>
+        
+        <main class="slot-machine">
+            <div class="slots">
+                <div class="slot" id="slot1">🤖</div>
+                <div class="slot" id="slot2">🤖</div>
+                <div class="slot" id="slot3">🤖</div>
+            </div>
+            <div class="controls">
+                <button id="spin-btn">Generate (10 Tokens)</button>
+            </div>
+            <div class="stats">
+                <div class="balance">Available Context Tokens: <span id="token-balance">1000</span></div>
+                <div class="message" id="message">Insert prompt to start generating!</div>
+            </div>
+        </main>
+        
+        <aside class="paytable">
+            <h2>Prompt Engineering Paytable</h2>
+            <ul>
+                <li>🤖🤖🤖 : +500 Tokens (AGI Achieved)</li>
+                <li>🧠🧠🧠 : +200 Tokens (Galaxy Brain Insight)</li>
+                <li>💸💸💸 : +100 Tokens (VC Funding Secured)</li>
+                <li>📉📉📉 : -50 Tokens (AI Winter approaching)</li>
+                <li>🗑️🗑️🗑️ : -100 Tokens (Garbage In, Garbage Out)</li>
+                <li>Any 2 🤖, 🧠, 💸 : +20 Tokens (Partial Match)</li>
+            </ul>
+        </aside>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

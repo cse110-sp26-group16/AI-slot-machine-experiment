@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎰 The Great AI Token Grinder 🎰</h1>
+        <div class="status-board">
+            <div class="stat">
+                <span>API Balance:</span>
+                <span id="balance">1000</span> <span class="unit">Tokens</span>
+            </div>
+            <div class="stat">
+                <span>Compute Cost:</span>
+                <span id="cost">50</span> <span class="unit">Tokens/Spin</span>
+            </div>
+        </div>
+        
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1">🤖</div>
+                <div class="reel" id="reel2">🧠</div>
+                <div class="reel" id="reel3">⚡</div>
+            </div>
+            <div class="lever-container">
+                <button id="spin-button" class="spin-button">GENERATE (SPIN)</button>
+            </div>
+        </div>
+
+        <div class="message-board">
+            <p id="message">Allocate tokens to generate HYPE!</p>
+        </div>
+
+        <div class="legend">
+            <h3>Paytable (Tokens Returned)</h3>
+            <ul>
+                <li>🤖🤖🤖 AGI Achieved: +500</li>
+                <li>🧠🧠🧠 Maximum Compute: +200</li>
+                <li>🚀🚀🚀 Hype Train: +150</li>
+                <li>⚡⚡⚡ Power Surge: +100</li>
+                <li>💸💸💸 VC Funding: +50</li>
+                <li>📉📉📉 Model Collapse: -100 (Hallucination penalty)</li>
+                <li>Any 2 matching: +10 (Context cached)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
