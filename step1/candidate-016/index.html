@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Burner - AI Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="machine-container">
+        <header>
+            <h1>THE TOKEN BURNER</h1>
+            <p class="subtitle">High-Fidelity Hallucination Engine</p>
+        </header>
+
+        <div class="status-panel">
+            <div class="stat">
+                <span class="label">TOKEN BUDGET</span>
+                <span id="token-balance" class="value">1000</span>
+            </div>
+            <div class="stat">
+                <span class="label">CONTEXT WINDOW</span>
+                <span id="context-window" class="value">0</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-strip"></div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="spin-button">RUN INFERENCE</button>
+                <div class="cost-info">COST: 50 TOKENS / SPIN</div>
+            </div>
+        </div>
+
+        <div class="log-container">
+            <div id="status-log">SYSTEM READY... AWAITING PROMPT...</div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Generative Gambler Inc. | All wins are hallucinated.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
