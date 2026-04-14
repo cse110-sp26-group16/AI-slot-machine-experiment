@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Gacha Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎰 The Great AI Token Burner 🎰</h1>
+            <p>Spend your context window. Pray for AGI.</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-box">
+                <span class="label">Context Tokens:</span>
+                <span id="balance" class="value">10000</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">Cost per Spin:</span>
+                <span class="value">100</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1">❓</div>
+                <div class="reel" id="reel2">❓</div>
+                <div class="reel" id="reel3">❓</div>
+            </div>
+            <div class="controls">
+                <button id="spinButton" class="spin-btn">Generate Response (SPIN)</button>
+            </div>
+        </div>
+
+        <div class="message-board">
+            <p id="message">System Prompt Loaded. Ready to generate.</p>
+        </div>
+
+        <div class="paytable">
+            <h3>Reward Function</h3>
+            <ul>
+                <li>🤖🤖🤖 - AGI Achieved! (+1000 Tokens)</li>
+                <li>🧠🧠🧠 - Emergent Behavior (+500 Tokens)</li>
+                <li>🚀🚀🚀 - VC Funding Secured (+250 Tokens)</li>
+                <li>💩💩💩 - Severe Hallucination (-500 Tokens Penalty)</li>
+                <li>Any 2 matching - Partial Match (+50 Tokens)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
