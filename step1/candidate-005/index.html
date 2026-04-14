@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Gacha: Token Burner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>LLM <span class="highlight">GACHA</span></h1>
+            <p class="subtitle">Burn tokens. Generate nothing.</p>
+        </header>
+
+        <div class="stats-panel">
+            <div class="stat">
+                <span class="label">CONTEXT TOKENS</span>
+                <span id="token-count" class="value">10000</span>
+            </div>
+            <div class="stat">
+                <span class="label">INFERENCE COST</span>
+                <span class="value">100</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reel-container">
+                <div class="reel" id="reel-1">
+                    <div class="symbol">🤖</div>
+                </div>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel-2">
+                    <div class="symbol">⚡</div>
+                </div>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel-3">
+                    <div class="symbol">📄</div>
+                </div>
+            </div>
+            <div class="lever-arm" id="spin-button">
+                <div class="handle"></div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <p id="status-text">Ready to infer...</p>
+        </div>
+
+        <div class="controls">
+            <button id="main-btn">GENERATE RESPONSE (SPIN)</button>
+        </div>
+
+        <div class="log" id="game-log">
+            <div class="log-entry">> System initialized. Weights loaded.</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

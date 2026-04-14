@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Token Spinner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Token Casino</h1>
+        <div class="status">
+            <p>Compute Left: <span id="balance">1000</span> Tokens</p>
+        </div>
+        
+        <div class="slot-machine">
+            <div class="reel" id="reel1">🤖</div>
+            <div class="reel" id="reel2">🤖</div>
+            <div class="reel" id="reel3">🤖</div>
+        </div>
+        
+        <div class="controls">
+            <button id="spinButton" onclick="spin()">Generate (Cost: 10 Tokens)</button>
+        </div>
+        
+        <div id="message-area" class="message-area">
+            Insert Prompt to begin...
+        </div>
+        <div class="legend">
+            <h3>Paytable</h3>
+            <p>🤖🤖🤖 Jackpot! AGI Achieved: +500 Tokens</p>
+            <p>🧠🧠🧠 Coherent Output: +100 Tokens</p>
+            <p>⚡⚡⚡ Burst Limit: +50 Tokens</p>
+            <p>💬💬💬 Helpful Assistant: +20 Tokens</p>
+            <p>💸💸💸 API Billing Cycle: -100 Tokens</p>
+            <p>Any 🗑️ Hallucination: Lose 10 Tokens</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Burner - AI Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scanline"></div>
+    <div id="terminal">
+        <div class="header">
+            SYSTEM: [TOKEN_BURNER_v1.0.4] INITIALIZED<br>
+            MARKET_HYPE: <span id="hype-meter">100</span>% (VOLATILE)
+        </div>
+        <div class="header">STATUS: [OVERFITTING_IN_PROGRESS]</div>
+        
+        <div class="slot-container">
+            <div class="reel" id="reel1">🤖</div>
+            <div class="reel" id="reel2">🧠</div>
+            <div class="reel" id="reel3">☁️</div>
+        </div>
+
+        <div class="controls">
+            <div class="stat">CREDITS: <span id="credits">10000</span></div>
+            <div class="stat">COST: 100 T/S</div>
+            <button id="spin-btn">TUNE MODEL (SPIN)</button>
+            <button id="recharge-btn" style="margin-top: 10px; font-size: 0.7rem; border-style: dotted;">SELL USER DATA (RECHARGE)</button>
+        </div>
+
+        <div id="output-log">
+            > Ready for inference...
+            > Awaiting training data (credits)...
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

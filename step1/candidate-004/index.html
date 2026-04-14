@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Slot Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Token Burner 🎰</h1>
+            <p>Spend tokens, maybe win context length!</p>
+        </header>
+        
+        <div class="status-bar">
+            <div class="tokens">Context Window: <span id="balance">1000</span> Tokens</div>
+            <div class="bet">Cost per Prompt: 10 Tokens</div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel1">🤖</div>
+                <div class="reel" id="reel2">🤖</div>
+                <div class="reel" id="reel3">🤖</div>
+            </div>
+            <div class="message" id="message">Insert tokens to generate prompt.</div>
+            <button id="spinButton">Generate Response (Spin)</button>
+        </div>
+        
+        <div class="paytable">
+            <h3>API Pricing (Paytable)</h3>
+            <ul>
+                <li>🧠🧠🧠 AGI Achieved - Win 500 Tokens</li>
+                <li>💸💸💸 Funding Secured - Win 200 Tokens</li>
+                <li>🤖🤖🤖 Basic Output - Win 50 Tokens</li>
+                <li>🐛🐛🐛 Syntax Error - Win 10 Tokens</li>
+                <li>🛑🛑🛑 Major Hallucination - <strong>Lose</strong> 50 Tokens!</li>
+                <li>Any Two 🛑 - <strong>Lose</strong> 10 Tokens</li>
+                <li>Any Other Two Match - Win 5 Tokens</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
