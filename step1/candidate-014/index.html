@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Guzzler 9000</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Token Guzzler 9000</h1>
+            <p class="subtitle">An LLM-Powered Slot Experience</p>
+        </header>
+        
+        <div class="stats-panel">
+            <div class="stat-box">
+                <span class="label">Context Window:</span>
+                <span id="token-balance" class="value">128000</span>
+                <span class="unit">Tokens</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">Prompt Cost:</span>
+                <span id="spin-cost" class="value">1024</span>
+                <span class="unit">Tokens</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="symbol">🧠</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="symbol">🚀</div>
+                </div>
+            </div>
+            <div class="machine-overlay"></div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-button" class="btn primary">
+                <span class="btn-text">Submit Prompt</span>
+                <span class="btn-cost">[-1024 Tokens]</span>
+            </button>
+        </div>
+
+        <div class="console">
+            <div class="console-header">
+                <span>terminal@guzzler-9000:~</span>
+            </div>
+            <div class="console-body">
+                <p id="message-display" class="message">> System ready. Awaiting user prompt...</p>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <h3>Symbol Reference</h3>
+            <ul>
+                <li>🚀 AGI (Jackpot)</li>
+                <li>🤖 GPU (High)</li>
+                <li>🧠 Parameters (Med)</li>
+                <li>🥑 Avocado Chair (Low)</li>
+                <li>📉 Hallucination (Wildcard)</li>
+                <li>♻️ Infinite Loop (Penalty!)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

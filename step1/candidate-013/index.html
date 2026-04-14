@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal">
+        <header>
+            <h1>GENERATIVE_SLOT_MACHINE.exe</h1>
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="label">COMPUTE TOKENS:</span>
+                    <span id="token-balance" class="value">1000</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels-container">
+                <div class="payline"></div>
+                <div class="reel" id="reel-1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="reel-strip"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="message-board">
+            <p id="message">> SYSTEM READY. INSERT COMPUTE TO SPIN.</p>
+        </div>
+
+        <div class="controls">
+            <div class="cost">COST: 10 TOKENS</div>
+            <button id="spin-btn">EXECUTE SPIN()</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

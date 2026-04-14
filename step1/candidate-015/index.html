@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Guzzler - AI Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1 class="glitch" data-text="THE TOKEN GUZZLER">THE TOKEN GUZZLER</h1>
+            <div class="status-bar">
+                <div class="stat">
+                    <span class="label">Context Window:</span>
+                    <span class="value" id="balanceDisplay">8192</span> <span class="unit">Tokens</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Compute Cost:</span>
+                    <span class="value" id="costDisplay">256</span> <span class="unit">Tokens/Spin</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="machine-container">
+            <div class="slot-machine">
+                <div class="reels-container">
+                    <div class="reel" id="reel-1">
+                        <div class="reel-content" id="reel-content-1">
+                            <!-- Symbols injected via JS -->
+                        </div>
+                    </div>
+                    <div class="reel" id="reel-2">
+                        <div class="reel-content" id="reel-content-2">
+                             <!-- Symbols injected via JS -->
+                        </div>
+                    </div>
+                    <div class="reel" id="reel-3">
+                        <div class="reel-content" id="reel-content-3">
+                             <!-- Symbols injected via JS -->
+                        </div>
+                    </div>
+                </div>
+                <div class="machine-overlay"></div>
+            </div>
+
+            <div class="controls">
+                <div class="bet-controls">
+                    <button id="btn-decrease-bet" class="control-btn" aria-label="Decrease Bet">-</button>
+                    <span id="current-bet">256</span>
+                    <button id="btn-increase-bet" class="control-btn" aria-label="Increase Bet">+</button>
+                </div>
+                <button id="btn-spin" class="spin-btn">
+                    <span class="btn-text">GENERATE</span>
+                    <span class="btn-glitch"></span>
+                </button>
+            </div>
+        </main>
+
+        <footer class="terminal-container">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="title">system.log</span>
+            </div>
+            <div class="terminal-body" id="terminal-log">
+                <p>> System initialized. Awaiting prompt...</p>
+                <p>> WARNING: High GPU temperatures detected.</p>
+                <p>> Ready to consume tokens.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

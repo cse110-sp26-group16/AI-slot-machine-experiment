@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Context Slot Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h2>AI Assistant</h2>
+            <div class="token-balance">
+                Context Tokens: <span id="balance">1000</span>
+            </div>
+        </header>
+
+        <div class="chat-history" id="chat-history">
+            <div class="message assistant-message">
+                Hello! I am ready to generate some tokens for you. 
+                Spin the reels to try and win more context window!
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="symbols">🧠<br>🤖<br>🖥️<br>🪙<br>🐛</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="symbols">🧠<br>🤖<br>🖥️<br>🪙<br>🐛</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="symbols">🧠<br>🤖<br>🖥️<br>🪙<br>🐛</div>
+                </div>
+            </div>
+            <div class="message-area" id="message-area">
+                Ready to generate.
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <button class="spin-button" id="spin-button">Generate (Cost: 10 Tokens)</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
