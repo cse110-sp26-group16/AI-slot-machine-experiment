@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Gacha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Token Gacha</h1>
+        <p class="subtitle">Spend your compute wisely!</p>
+        
+        <div class="stats">
+            <div class="stat">Tokens: <span id="token-count">1000</span></div>
+            <div class="stat">Cost per prompt: <span id="spin-cost">100</span></div>
+        </div>
+
+        <div class="machine">
+            <div class="reels">
+                <div class="reel" id="reel-1">🤖</div>
+                <div class="reel" id="reel-2">🤖</div>
+                <div class="reel" id="reel-3">🤖</div>
+            </div>
+            <div class="message" id="message">Insert tokens to generate!</div>
+            <button id="spin-button" class="spin-btn">GENERATE (Spin)</button>
+        </div>
+        
+        <div class="legend">
+            <h3>Paytable</h3>
+            <p>🤖🤖🤖 : +1000 Tokens (AGI Achieved!)</p>
+            <p>🧠🧠🧠 : +500 Tokens (Galaxy Brain)</p>
+            <p>💸💸💸 : +250 Tokens (VC Funding Secured)</p>
+            <p>Any 2 matching : +50 Tokens (Partial Match)</p>
+            <p>🗑️ : -50 Tokens per trash (Garbage In, Garbage Out)</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
