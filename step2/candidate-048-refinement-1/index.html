@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Token Casino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <header>
+            <h1>LLM TOKEN CASINO v1.0.0</h1>
+            <p class="subtitle">> Initialize standard_slot_machine.py</p>
+        </header>
+
+        <div class="dashboard">
+            <div class="balance-display">
+                <span>TOKENS:</span>
+                <span id="token-balance">50000</span>
+            </div>
+            <div class="cost-display">
+                <span>PROMPT COST: 1000 TOKENS</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="symbol-container">🤖</div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="symbol-container">🤖</div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="symbol-container">🤖</div>
+                </div>
+            </div>
+            <div class="overlay-scanline"></div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-btn" class="terminal-btn">> GENERATE_RESPONSE()</button>
+        </div>
+
+        <div class="status-log">
+            <div class="log-header">SYSTEM_LOG:</div>
+            <div id="log-content">> Ready for prompt...</div>
+        </div>
+        
+        <div class="legend">
+            <h3>PAYTABLE:</h3>
+            <ul>
+                <li>🧠🧠🧠 : 50,000 (Jackpot - AGI Achieved)</li>
+                <li>💾💾💾 : 10,000 (Compute Secured)</li>
+                <li>🌈🌈🌈 : 5,000 (Hallucination - It works!)</li>
+                <li>🤖🤖🤖 : 2,000 (Standard Output)</li>
+                <li>✋✋✋ : 500 (6-Fingers - Close enough)</li>
+                <li>🛑🛑🛑 : -5,000 (Context Limit - Penalty)</li>
+                <li>Any 2 matching: 500</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

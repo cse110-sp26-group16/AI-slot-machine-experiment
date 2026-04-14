@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Grinder - AI Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-container">
+        <header>
+            <h1>THE TOKEN GRINDER</h1>
+            <p class="subtitle">v1.0.42-beta // COMPUTE OR BE COMPUTED</p>
+        </header>
+
+        <div class="stats-panel">
+            <div class="stat">
+                <span class="label">INPUT_TOKENS:</span>
+                <span id="balance" class="value">1000</span>
+            </div>
+            <div class="stat">
+                <span class="label">COST_PER_INFERENCE:</span>
+                <span class="value">50</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel1">🤖</div>
+                <div class="reel" id="reel2">🤖</div>
+                <div class="reel" id="reel3">🤖</div>
+            </div>
+            <div class="scanline"></div>
+        </div>
+
+        <div class="controls">
+            <button id="spin-button">RUN INFERENCE</button>
+        </div>
+
+        <div class="status-panel">
+            <div class="terminal-output" id="status-message">Ready for computation...</div>
+        </div>
+
+        <footer>
+            <p>GPU TEMP: 42°C | FAN SPEED: 100% | AGI: 99% LOADING...</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

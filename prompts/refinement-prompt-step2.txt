@@ -1,0 +1,9 @@
+<!-- TODO: Team — write your refinement prompt here (MAX 200 words) -->
+<!-- Remember: no new technologies, but you CAN add features, fix bugs, change design, improve code -->
+<!-- This same prompt will be used for ALL 5 candidates in step2 -->
+<!-- Example areas to consider: -->
+<!--   - Fix any bugs you noticed -->
+<!--   - Improve visual polish or animations -->
+<!--   - Deepen the AI satire theme -->
+<!--   - Add gameplay features (bet adjustment, bonus rounds, etc.) -->
+<!--   - Improve code quality (readability, comments, organization) -->
