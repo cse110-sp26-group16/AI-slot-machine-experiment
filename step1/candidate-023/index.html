@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI-Generator-3000 | AI Training Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AGI-Generator-3000</h1>
+            <p class="subtitle">"Where the GPUs are hot, and the results are mostly hallucinated!"</p>
+        </header>
+
+        <main>
+            <div class="slot-machine">
+                <div class="reels">
+                    <div class="reel" id="reel1">🖥️</div>
+                    <div class="reel" id="reel2">🌫️</div>
+                    <div class="reel" id="reel3">🐈</div>
+                </div>
+
+                <div class="controls">
+                    <button id="train-btn" class="btn">Train Model (10 Credits)</button>
+                    <div class="alignment-box">
+                        <label>
+                            <input type="checkbox" id="safe-alignment">
+                            Enable "Safe" Alignment (Does Nothing)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="feedback" id="feedback">
+                    Ready to incinerate some compute credits?
+                </div>
+            </div>
+
+            <aside class="stats-panel">
+                <div class="stat">
+                    <span class="label">Compute Credits:</span>
+                    <span id="credits" class="value">100</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Total Hallucinations:</span>
+                    <span id="hallucinations" class="value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Model Prowess:</span>
+                    <span id="prowess" class="value">0.00%</span>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ and 1.2 gigawatts of wasted power.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

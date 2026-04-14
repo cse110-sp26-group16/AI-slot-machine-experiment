@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Burner v1.0 (Beta)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Token Burner <span>v1.0 (BETA)</span></h1>
+            <p class="subtitle">Burning GPUs for your entertainment</p>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+
+            <div class="controls">
+                <div class="display-panel">
+                    <div class="stat">
+                        <label>COMPUTE CREDITS</label>
+                        <div id="compute-credits" class="value">500.00</div>
+                    </div>
+                    <div class="stat">
+                        <label>CONTEXT WINDOW (WIN)</label>
+                        <div id="context-window" class="value">0</div>
+                    </div>
+                </div>
+
+                <div class="action-area">
+                    <button id="spin-btn" class="primary-btn">RUN INFERENCE</button>
+                    <div class="bet-control">
+                        <label>TOKEN TEMP:</label>
+                        <select id="bet-amount">
+                            <option value="10">Low (10c)</option>
+                            <option value="25" selected>Stable (25c)</option>
+                            <option value="50">Stochastic (50c)</option>
+                            <option value="100">Hallucinate (100c)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="terminal-container">
+            <div class="terminal-header">TERMINAL LOG [RUNNING]</div>
+            <div id="terminal-log" class="terminal-body">
+                <div class="log-entry system">> Initializing weights...</div>
+                <div class="log-entry system">> Loading safety filters...</div>
+                <div class="log-entry system">> Ready for inference.</div>
+            </div>
+        </aside>
+
+        <footer>
+            <p>&copy; 2026 AGI-Hypetrain Corp. | "Your context is our currency."</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

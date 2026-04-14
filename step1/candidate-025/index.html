@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOKEN BURNER - AI Inference Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>TOKEN BURNER</h1>
+            <p class="subtitle">AI Inference & VC Funding Simulator</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="label">COMPUTE TOKENS</span>
+                <span id="token-balance" class="value">1000</span>
+            </div>
+            <div class="stat-item">
+                <span class="label">HYPE LEVEL</span>
+                <span id="hype-level" class="value">1.0x</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="win-line"></div>
+            </div>
+
+            <div class="controls">
+                <button id="spin-button" class="primary-button">RUN INFERENCE</button>
+                <div class="cost-info">Cost: 50 Tokens</div>
+            </div>
+        </div>
+
+        <div class="status-panel">
+            <div class="panel-header">SYSTEM LOG</div>
+            <div id="status-log" class="log-content">
+                INITIALIZING PARAMETERS...
+                READY FOR TRAINING...
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Hyper-Scale Solutions. <i>"Scaling is all you need."</i></p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Burner - Stochastic Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>AI Token Burner 🤖</h1>
+            <p class="subtitle">Burning Venture Capital at 1M tokens/sec</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-box">
+                <span class="label">Compute Tokens</span>
+                <span id="token-count" class="value">1000</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">Total Hallucinations</span>
+                <span id="win-count" class="value">0</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels">
+                <div class="reel" id="reel-1"><div class="reel-inner">🤖</div></div>
+                <div class="reel" id="reel-2"><div class="reel-inner">🤖</div></div>
+                <div class="reel" id="reel-3"><div class="reel-inner">🤖</div></div>
+            </div>
+            <div class="controls">
+                <div class="bet-controls">
+                    <button class="bet-btn active" data-bet="10">Base Model (10)</button>
+                    <button class="bet-btn" data-bet="50">Large Model (50)</button>
+                    <button class="bet-btn" data-bet="100">State-of-the-Art (100)</button>
+                </div>
+                <button id="spin-btn">BURN TOKENS (SPIN)</button>
+            </div>
+        </div>
+
+        <div class="console-box">
+            <div class="console-header">System Logs</div>
+            <div id="console-logs" class="logs">
+                <div class="log-entry">> System initialized. Initializing stochastic parrots...</div>
+                <div class="log-entry">> Ready for inference.</div>
+            </div>
+        </div>
+
+        <div id="bankruptcy-overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <h2>RUN OUT OF TOKENS!</h2>
+                <p>You have hallucinated your way into bankruptcy.</p>
+                <button id="reset-btn">RAISE SERIES A (RESET)</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
