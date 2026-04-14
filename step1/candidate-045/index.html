@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Gacha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Generative Slot Machine</h1>
+            <p>Spend your context, win some tokens!</p>
+        </header>
+
+        <div class="stats">
+            <div class="balance">Tokens Remaining: <span id="token-count">1000</span></div>
+            <div class="cost">Cost per generation: <span id="spin-cost">10</span></div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reels-container">
+                <div class="reel" id="reel-1">
+                    <div class="symbol">🤖</div>
+                </div>
+                <div class="reel" id="reel-2">
+                    <div class="symbol">🧠</div>
+                </div>
+                <div class="reel" id="reel-3">
+                    <div class="symbol">💸</div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="spin-btn">GENERATE (Spin)</button>
+            </div>
+        </div>
+
+        <div class="message-board">
+            <p id="message">System prompt loaded. Ready to consume tokens.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
