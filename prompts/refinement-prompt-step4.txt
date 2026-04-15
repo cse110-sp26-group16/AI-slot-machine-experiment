@@ -1,1 +1,11 @@
-Polish the AI casino slot machine into a complete, shippable experience. The terminal/dark aesthetic should feel intentional, so tighten the color palette so every UI element, from the reel borders to the log feed, shares the same visual language. The TOKEN TEMP modes need to feel meaningfully different in practice and not just in label. Hallucinate mode should feel genuinely chaotic and risky. Expand the terminal log with at least fifteen distinct flavor text lines that react to specific outcomes, like "context window exceeded" on a near-miss or "human feedback loop initiated" on a bonus spin. Layer in more AI jokes tied directly to the result because the snarkier the better. Win and loss animations should feel like a spectrum: a faint green pulse for 2x, a full reel flash for 5x, and a full-on screen takeover for jackpot. The ambient UI elements like GPU temp, AGI progress bar, and token counter should feel alive and react to every spin, not just sit there idling. Tighten up the sound design so each event has a distinct, punchy audio cue that fits a neon Vegas vibe, and make sure nothing clips or overlaps awkwardly.
+Polish the slot machine into a demo-ready product. The reel spin animation should feel smooth
+and satisfying — symbols should visibly scroll through the reel window before landing with a
+bounce or snap effect. Add a particle or confetti burst on big wins and a glitch/static effect
+on losses. The terminal log should have more variety in its AI-themed messages — at least 10
+unique loss messages and 5 unique win messages that satirize AI hype culture, hallucinations,
+prompt engineering, and VC funding. Include a running win/loss streak counter visible in the UI.
+Sound effects should layer — a ticking during spin, a thud on each reel stop, and escalating
+fanfare scaled to win size. Ensure the reset flow is smooth with a dramatic "system reboot"
+animation. The paytable should clearly show how TOKEN TEMP affects risk and reward. All
+animations should clean up properly with no lingering visual artifacts. The overall experience
+should feel like a polished arcade cabinet you would proudly demo.

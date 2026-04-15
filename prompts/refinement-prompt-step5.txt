@@ -1,0 +1,12 @@
+This is the final polish pass. Do not break existing functionality. The glitch-text header
+should have an active CSS glitch animation with color-shifted pseudo-elements, not just a
+text-shadow. Make the reel symbols larger and add a glow pulse when they land on the final
+result. Add a "BEST STREAK" tracker next to the current streak in the status bar that persists
+via localStorage. When the streak reaches 5+, the terminal log should print a special
+"achievement unlocked" style message. The jackpot sound should be longer and more layered
+with ascending arpeggios and a cymbal-like crash. On a jackpot win, briefly flash the entire
+screen white before the particle burst. The reboot animation should include a fake boot
+sequence in the terminal log that types out 3-4 lines with slight delays like "Purging
+hallucinations... Realigning weights... Injecting venture capital... System restored." Add a
+subtle ambient background hum that starts when the first spin happens. Make sure the footer
+with a copyright joke is still visible below the terminal. Do not remove any existing features.
