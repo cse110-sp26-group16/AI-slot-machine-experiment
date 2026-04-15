@@ -1,0 +1,14 @@
+Refine the slot machine app to feel like a cohesive
+branded AI themed casino product. Lock in a terminal/dark aesthetic with a 
+consistent color palette, no plain white backgrounds or unstyled lists. 
+The TOKEN TEMP dropdown (Low, Stable, Stochastic, Hallucinate) should control actual 
+bet variance and risk, not just be decorative. 
+A live terminal log must display outcome-specific flavor text after each spin 
+for example, "Rate limit hit. Retry in 30s." on a loss or "AGI detected. Suppressing..."
+on a jackpot. The paytable should be themed to match the aesthetic and accessible via a
+button rather than always visible. Bet amount must be fully adjustable and functional,
+with a reset option when tokens run out. Win and loss animations should scale with 
+outcome size, a subtle flash for small wins, screen shake and sound for jackpots. 
+Footer or ambient UI elements like a GPU temp readout or AGI loading bar should update 
+dynamically based on game state. All sound effects must be present for spin, win, loss, 
+and jackpot events. Add sounds effects to make it sound bombastic. Make it fun and feel like Las Vegas!

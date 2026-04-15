@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Token Grinder - AI Casino</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="terminal-container" id="main-container">
+      <header>
+        <h1>THE TOKEN GRINDER</h1>
+        <p class="subtitle">v3.0 // AGI CONTAINMENT BREACH EDITION</p>
+        <div class="header-controls">
+          <button id="payouts-btn" class="sys-btn">[INFO / PAYOUTS]</button>
+          <button id="reset-btn" class="sys-btn hidden">[EMERGENCY RESET]</button>
+        </div>
+      </header>
+
+      <div class="stats-panel">
+        <div class="stat">
+          <span class="label">TOKENS:</span>
+          <span id="balance" class="value">1000</span>
+        </div>
+        <div class="stat bet-control">
+          <span class="label">BET:</span>
+          <button id="bet-minus" class="bet-btn">-</button>
+          <input type="number" id="bet-amount" class="value-input" value="50" min="10" step="10">
+          <button id="bet-plus" class="bet-btn">+</button>
+        </div>
+        <div class="stat temp-control">
+          <span class="label">TEMP:</span>
+          <select id="token-temp" class="value-select">
+            <option value="low">Low (Safe)</option>
+            <option value="stable" selected>Stable (Normal)</option>
+            <option value="stochastic">Stochastic (High Risk)</option>
+            <option value="hallucinate">Hallucinate (Extreme)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="slot-machine">
+        <div class="reels-container">
+          <div class="reel"><div class="reel-inner" id="reel1"></div></div>
+          <div class="reel"><div class="reel-inner" id="reel2"></div></div>
+          <div class="reel"><div class="reel-inner" id="reel3"></div></div>
+        </div>
+        <div class="scanline"></div>
+      </div>
+
+      <div class="controls">
+        <button id="spin-button">EXECUTE INFERENCE</button>
+      </div>
+
+      <div class="status-panel">
+        <div class="terminal-log" id="terminal-log">
+          <div>> SYSTEM INITIALIZED. AWAITING INPUT.</div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-stats">
+          <span id="gpu-temp">GPU: 42°C</span> | 
+          <span id="fan-speed">FAN: 20%</span> | 
+          <span id="model-status">MODEL: IDLE</span>
+        </div>
+        <div class="agi-bar-container">
+          <span class="agi-label">AGI THREAT LEVEL:</span>
+          <div class="agi-bar"><div class="agi-fill" id="agi-fill"></div></div>
+        </div>
+      </footer>
+
+      <div id="payouts-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>SYSTEM PAYOUTS</h2>
+          <div id="payouts-list"></div>
+          <button id="close-payouts" class="sys-btn">[CLOSE]</button>
+        </div>
+      </div>
+
+      <div id="coin-shower"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
