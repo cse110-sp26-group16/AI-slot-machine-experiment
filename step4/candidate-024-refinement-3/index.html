@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Token Burner - AGI Casino Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="container" id="main-container">
+        <header>
+            <h1>THE TOKEN BURNER <span>v2.0 (AGI)</span></h1>
+            <p class="subtitle">Burning GPUs for your entertainment</p>
+            <div class="header-controls">
+                <button id="paytable-btn" class="secondary-btn">[ VIEW PAYOUTS ]</button>
+            </div>
+        </header>
+
+        <main class="slot-machine">
+            <div class="reels-container" id="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-strip"></div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+
+            <div class="controls">
+                <div class="display-panel">
+                    <div class="stat">
+                        <label>COMPUTE CREDITS</label>
+                        <div id="compute-credits" class="value">1000.00</div>
+                    </div>
+                    <div class="stat">
+                        <label>CONTEXT WINDOW (WIN)</label>
+                        <div id="context-window" class="value">0</div>
+                    </div>
+                </div>
+
+                <div class="action-area">
+                    <div class="bet-controls-group">
+                        <div class="stat temp-control">
+                            <label>TOKEN TEMP (RISK)</label>
+                            <select id="token-temp" class="temp-select">
+                                <option value="low">Low (Safe)</option>
+                                <option value="stable" selected>Stable (Normal)</option>
+                                <option value="stochastic">Stochastic (High)</option>
+                                <option value="hallucinate">Hallucinate (Extreme)</option>
+                            </select>
+                        </div>
+                        <div class="bet-control">
+                            <label>BET:</label>
+                            <button id="bet-down" class="bet-btn">-</button>
+                            <span id="current-bet">50</span>
+                            <button id="bet-up" class="bet-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="main-actions">
+                        <button id="spin-btn" class="primary-btn">RUN INFERENCE</button>
+                        <button id="reset-btn" class="danger-btn hidden">INJECT CAPITAL</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="terminal-container">
+            <div class="terminal-header">TERMINAL LOG [RUNNING]</div>
+            <div id="terminal-log" class="terminal-body">
+                <div class="log-entry system">> Initializing neural weights...</div>
+                <div class="log-entry system">> Loading casino parameters...</div>
+                <div class="log-entry system">> Ready for inference. Place your bets.</div>
+            </div>
+        </aside>
+
+        <footer>
+            <div class="ambient-ui">
+                <div class="gpu-status">GPU TEMP: <span id="gpu-temp" class="glow-text">65°C</span></div>
+                <div class="agi-progress">
+                    AGI ALIGNMENT: 
+                    <div class="bar-container">
+                        <div id="agi-bar" class="bar"></div>
+                    </div>
+                    <span id="agi-percent" class="glow-text">0.00%</span>
+                </div>
+            </div>
+            <p>&copy; 2026 AGI-Hypetrain Corp. | "Your context is our currency."</p>
+        </footer>
+    </div>
+
+    <!-- Paytable Modal -->
+    <div id="paytable-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Payout Information</h2>
+            <div id="paytable-grid"></div>
+            <p class="paytable-note">* Payouts adjust dynamically based on Token Temp.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
