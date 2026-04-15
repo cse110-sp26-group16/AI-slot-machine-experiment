@@ -1,5 +1,19 @@
 # AI-slot-machine-experiment
 
+## Model & Harness
+
+All 50 baseline runs and all refinement runs were executed against the following frozen configuration. Do not change any of this between runs.
+
+| Variable | Value |
+| :--- | :--- |
+| Coding assistant / harness | Gemini Code Assist (Google One AI Pro) |
+| Model + version string | `gemini-3.1-pro-preview` |
+| Session policy | New clean chat per run — no `GEMINI.md`, no project memory, no skills files, no MCP servers, no carried-over context |
+| Hand-editing | None — generated code is committed as-is |
+| Prompt | Exact verbatim text from `prompts/original-prompt.txt` (Step 1) or `prompts/refinement-prompt-stepX.txt` (refinement rounds) |
+
+## Instructions
+
 We need to run the slot machine prompt 50 times using the most advanced model available, and we need to make sure that each run is a **clean run**
 
 Do **not** edit the code at all after running the prompt.

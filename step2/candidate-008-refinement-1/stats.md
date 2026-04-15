@@ -1,6 +1,6 @@
 | Field | Recorded Metric |
 | :--- | :--- |
-| Run ID | candidate-008 |
+| Run ID | candidate-008-refinement-1 |
 | Timestamp | 2026-04-14T14:48:40-07:00 |
 | Model + version string | gemini-3.1-pro-preview |
 | Input tokens | 56,212 |

@@ -2,7 +2,7 @@
 | :--- | :--- |
 | Run ID | `candidate-022` |
 | Timestamp | 2026-04-14T10:00:00Z |
-| Model + version string | gemini-3-flash-preview |
+| Model + version string | gemini-3.1-pro-preview |
 | Input tokens | 46,951 |
 | Output tokens | 5,704 |
 | Total tokens | 52,655 |

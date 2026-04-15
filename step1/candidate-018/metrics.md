@@ -4,7 +4,7 @@
 |---|---|
 | Run ID | candidate-018 |
 | Timestamp | 2026-04-13T21:55:00-07:00 |
-| Model + version string | gemini-3-flash-preview |
+| Model + version string | gemini-3.1-pro-preview |
 | Input tokens | N/A |
 | Output tokens | N/A |
 | Total tokens | N/A |
