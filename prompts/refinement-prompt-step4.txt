@@ -1,0 +1,11 @@
+Polish the slot machine into a demo-ready product. The reel spin animation should feel smooth
+and satisfying — symbols should visibly scroll through the reel window before landing with a
+bounce or snap effect. Add a particle or confetti burst on big wins and a glitch/static effect
+on losses. The terminal log should have more variety in its AI-themed messages — at least 10
+unique loss messages and 5 unique win messages that satirize AI hype culture, hallucinations,
+prompt engineering, and VC funding. Include a running win/loss streak counter visible in the UI.
+Sound effects should layer — a ticking during spin, a thud on each reel stop, and escalating
+fanfare scaled to win size. Ensure the reset flow is smooth with a dramatic "system reboot"
+animation. The paytable should clearly show how TOKEN TEMP affects risk and reward. All
+animations should clean up properly with no lingering visual artifacts. The overall experience
+should feel like a polished arcade cabinet you would proudly demo.

@@ -1,0 +1,631 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const symbolDefs = [
+        { emoji: '🤖', name: 'AGI', value: 'robot' },
+        { emoji: '🧠', name: 'Compute', value: 'brain' },
+        { emoji: '💬', name: 'Prompt', value: 'prompt' },
+        { emoji: '💸', name: 'Tokens', value: 'money' },
+        { emoji: '🐛', name: 'Bug', value: 'bug' }
+    ];
+
+    const reels = [
+        document.getElementById('reel-1').querySelector('.reel-strip'),
+        document.getElementById('reel-2').querySelector('.reel-strip'),
+        document.getElementById('reel-3').querySelector('.reel-strip')
+    ];
+
+    const spinBtn = document.getElementById('spin-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const infoBtn = document.getElementById('info-btn');
+    const decreaseBetBtn = document.getElementById('decrease-bet');
+    const increaseBetBtn = document.getElementById('increase-bet');
+    const betInput = document.getElementById('bet-input');
+    const tempSelect = document.getElementById('token-temp');
+    
+    const balanceDisplay = document.getElementById('token-balance');
+    const streakDisplay = document.getElementById('streak-counter');
+    const bestStreakDisplay = document.getElementById('best-streak-counter');
+    const terminalLog = document.getElementById('terminal-log');
+    const gameContainer = document.getElementById('game-container');
+    const reelsContainer = document.getElementById('reels-container');
+    const payoutModal = document.getElementById('payout-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const particleContainer = document.getElementById('particle-container');
+
+    const gpuTempDisplay = document.getElementById('gpu-temp');
+    const agiLoadDisplay = document.getElementById('agi-load');
+
+    let balance = 1000;
+    const INITIAL_BALANCE = 1000;
+    let streak = 0;
+    let bestStreak = parseInt(localStorage.getItem('aiSlotBestStreak')) || 0;
+    bestStreakDisplay.textContent = bestStreak;
+    
+    let isSpinning = false;
+    
+    const SYMBOL_HEIGHT = 130;
+    const NUM_SPIN_SYMBOLS = 30;
+
+    let gpuTemp = 45;
+    let gpuInterval;
+
+    // Web Audio API context
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx;
+    let humOsc, humGain;
+    let humStarted = false;
+
+    function createParticles(count, type) {
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            
+            // Random emojis or generic shapes based on type
+            const symbols = ['✨', '💎', '🚀', '🔥', '💸'];
+            p.textContent = (type === 'jackpot') ? symbols[Math.floor(Math.random() * symbols.length)] : '+';
+            if (type !== 'jackpot') p.style.color = 'var(--text-main)';
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 50 + Math.random() * 150;
+            const tx = Math.cos(angle) * velocity + 'px';
+            const ty = Math.sin(angle) * velocity + 'px';
+            const rot = (Math.random() * 360) + 'deg';
+            
+            p.style.setProperty('--tx', tx);
+            p.style.setProperty('--ty', ty);
+            p.style.setProperty('--rot', rot);
+            
+            particleContainer.appendChild(p);
+            
+            // Cleanup
+            setTimeout(() => {
+                if (p.parentNode) p.parentNode.removeChild(p);
+            }, 1500);
+        }
+    }
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+    }
+
+    function startAmbientHum() {
+        if (humStarted || !audioCtx) return;
+        humStarted = true;
+        
+        humOsc = audioCtx.createOscillator();
+        humOsc.type = 'sine';
+        humOsc.frequency.setValueAtTime(50, audioCtx.currentTime); 
+        
+        humGain = audioCtx.createGain();
+        humGain.gain.setValueAtTime(0.02, audioCtx.currentTime); 
+        
+        humOsc.connect(humGain);
+        humGain.connect(audioCtx.destination);
+        humOsc.start();
+    }
+
+    // Advanced Audio synthesis
+    function playTone(freq, type, duration, vol = 0.1, sweep = 0) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        if (sweep !== 0) {
+            osc.frequency.exponentialRampToValueAtTime(freq * sweep, audioCtx.currentTime + duration);
+        }
+        
+        gainNode.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playSpinSound() {
+        if (!audioCtx) return;
+        let time = 0;
+        for (let i = 0; i < 25; i++) {
+            setTimeout(() => playTone(400 + (i * 10), 'triangle', 0.02, 0.03), time);
+            time += 80;
+        }
+    }
+
+    function playWinSoundSmall() {
+        if (!audioCtx) return;
+        playTone(600, 'sine', 0.1, 0.1);
+        setTimeout(() => playTone(800, 'sine', 0.3, 0.1), 100);
+    }
+
+    function playWinSoundLarge() {
+        if (!audioCtx) return;
+        let time = audioCtx.currentTime;
+        const notes = [400, 500, 600, 800, 1000, 1200, 1600];
+        
+        notes.forEach((freq, i) => {
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(freq, time + i * 0.1);
+            gainNode.gain.setValueAtTime(0.15, time + i * 0.1);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, time + i * 0.1 + 0.1);
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            osc.start(time + i * 0.1);
+            osc.stop(time + i * 0.1 + 0.1);
+        });
+
+        setTimeout(() => {
+            const bufferSize = audioCtx.sampleRate * 2;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            const noiseFilter = audioCtx.createBiquadFilter();
+            noiseFilter.type = 'highpass';
+            noiseFilter.frequency.value = 1000;
+            const noiseGain = audioCtx.createGain();
+            noiseGain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2);
+            
+            noise.connect(noiseFilter);
+            noiseFilter.connect(noiseGain);
+            noiseGain.connect(audioCtx.destination);
+            noise.start();
+        }, notes.length * 100);
+    }
+
+    function playLossSound() {
+        if (!audioCtx) return;
+        playTone(150, 'sawtooth', 0.4, 0.1, 0.5); 
+        setTimeout(() => playTone(100, 'sawtooth', 0.4, 0.15, 0.5), 200);
+    }
+
+    function playReelStop() {
+        if (!audioCtx) return;
+        playTone(100, 'square', 0.15, 0.2);
+    }
+
+    // Distributions based on temp
+    // order: robot, brain, prompt, money, bug
+    const dist = {
+        'low':         [0.05, 0.15, 0.30, 0.40, 0.10],
+        'stable':      [0.10, 0.20, 0.25, 0.25, 0.20],
+        'stochastic':  [0.20, 0.20, 0.15, 0.15, 0.30],
+        'hallucinate': [0.30, 0.10, 0.05, 0.05, 0.50]
+    };
+
+    function getRandomSymbol(temp) {
+        const probs = dist[temp];
+        let rand = Math.random();
+        let sum = 0;
+        for (let i = 0; i < probs.length; i++) {
+            sum += probs[i];
+            if (rand <= sum) return symbolDefs[i];
+        }
+        return symbolDefs[symbolDefs.length - 1]; // fallback
+    }
+
+    function initReels() {
+        reels.forEach(reelStrip => {
+            reelStrip.innerHTML = ''; 
+            const randomSymbol = getRandomSymbol('stable');
+            const div = document.createElement('div');
+            div.className = 'symbol';
+            div.textContent = randomSymbol.emoji;
+            div.dataset.value = randomSymbol.value;
+            reelStrip.appendChild(div);
+            reelStrip.style.transform = `translateY(0px)`;
+        });
+    }
+
+    initReels();
+
+    // Ambient UI logic
+    function updateAmbientUI(state) {
+        if (state === 'idle') {
+            agiLoadDisplay.textContent = 'IDLE';
+            agiLoadDisplay.className = 'status-idle';
+        } else if (state === 'spin') {
+            agiLoadDisplay.textContent = 'INFERENCING...';
+            agiLoadDisplay.className = 'status-busy';
+        } else if (state === 'err') {
+            agiLoadDisplay.textContent = 'KERNEL PANIC';
+            agiLoadDisplay.className = 'status-err';
+        } else if (state === 'win') {
+            agiLoadDisplay.textContent = 'PAYLOAD EXTRACTED';
+            agiLoadDisplay.className = 'status-idle';
+        }
+    }
+
+    function startGpuFluctuation() {
+        gpuInterval = setInterval(() => {
+            if (!isSpinning) {
+                gpuTemp += (Math.random() * 2 - 1);
+                if (gpuTemp < 35) gpuTemp = 35;
+                if (gpuTemp > 55) gpuTemp = 55;
+            } else {
+                gpuTemp += (Math.random() * 5 + 2);
+                if (gpuTemp > 95) gpuTemp = 95;
+            }
+            gpuTempDisplay.textContent = `${Math.floor(gpuTemp)}°C`;
+            
+            if (gpuTemp > 85) gpuTempDisplay.style.color = 'var(--text-err)';
+            else if (gpuTemp > 70) gpuTempDisplay.style.color = 'var(--text-warn)';
+            else gpuTempDisplay.style.color = 'var(--text-sys)';
+        }, 500);
+    }
+    startGpuFluctuation();
+
+    function logMessage(text, type = 'sys') {
+        const entry = document.createElement('div');
+        entry.className = `log-entry ${type}`;
+        
+        let prefix = '> ';
+        if (type === 'err') prefix = '[ERR] ';
+        if (type === 'win') prefix = '[OK] ';
+        if (type === 'jackpot') prefix = '[!!!] ';
+
+        entry.textContent = prefix + text;
+        terminalLog.appendChild(entry);
+        
+        // Auto-scroll
+        terminalLog.scrollTop = terminalLog.scrollHeight;
+        
+        // Keep log from growing infinitely
+        if (terminalLog.children.length > 50) {
+            terminalLog.removeChild(terminalLog.firstChild);
+        }
+    }
+
+    function updateBalance(amount) {
+        balance += amount;
+        balanceDisplay.textContent = balance;
+        checkResetCondition();
+    }
+
+    function getBetAmount() {
+        let val = parseInt(betInput.value);
+        if (isNaN(val) || val < 1) {
+            val = 1;
+            betInput.value = val;
+        }
+        return val;
+    }
+
+    function updateBetAmount(delta) {
+        let current = getBetAmount();
+        current += delta;
+        if (current < 1) current = 1;
+        betInput.value = current;
+    }
+
+    function checkResetCondition() {
+        if (balance < 1) {
+            resetBtn.classList.remove('hidden');
+            spinBtn.disabled = true;
+            logMessage('CRITICAL: Compute tokens depleted.', 'err');
+        } else {
+            resetBtn.classList.add('hidden');
+            if(!isSpinning) spinBtn.disabled = false;
+        }
+    }
+
+    function clearAnimations() {
+        reelsContainer.classList.remove('anim-loss-container', 'anim-win-small', 'anim-win-large-container');
+        gameContainer.classList.remove('anim-loss', 'anim-win-large', 'anim-reboot');
+        particleContainer.innerHTML = '';
+        document.querySelectorAll('.anim-glow-pulse').forEach(el => el.classList.remove('anim-glow-pulse'));
+    }
+
+    async function spin() {
+        initAudio();
+        startAmbientHum();
+        if (isSpinning) return;
+        
+        const currentBet = getBetAmount();
+
+        if (balance < currentBet) {
+            logMessage(`Insufficient tokens for allocation: ${currentBet}`, 'err');
+            clearAnimations();
+            gameContainer.classList.add('anim-loss');
+            playLossSound();
+            return;
+        }
+
+        isSpinning = true;
+        spinBtn.disabled = true;
+        decreaseBetBtn.disabled = true;
+        increaseBetBtn.disabled = true;
+        betInput.disabled = true;
+        tempSelect.disabled = true;
+        
+        updateBalance(-currentBet);
+        const temp = tempSelect.value;
+        logMessage(`Executing prompt (Temp: ${temp}, Alloc: ${currentBet})...`, 'sys');
+        updateAmbientUI('spin');
+        playSpinSound();
+        clearAnimations();
+
+        // Determine results based on temp
+        const finalResults = [
+            getRandomSymbol(temp),
+            getRandomSymbol(temp),
+            getRandomSymbol(temp)
+        ];
+
+        // Prepare reels
+        reels.forEach((reelStrip, index) => {
+            const currentSymbol = reelStrip.lastElementChild;
+            reelStrip.innerHTML = '';
+            if (currentSymbol) reelStrip.appendChild(currentSymbol);
+
+            for (let i = 0; i < NUM_SPIN_SYMBOLS; i++) {
+                const rs = symbolDefs[Math.floor(Math.random() * symbolDefs.length)];
+                const div = document.createElement('div');
+                div.className = 'symbol';
+                div.textContent = rs.emoji;
+                reelStrip.appendChild(div);
+            }
+
+            const finalDiv = document.createElement('div');
+            finalDiv.className = 'symbol';
+            finalDiv.textContent = finalResults[index].emoji;
+            finalDiv.dataset.value = finalResults[index].value;
+            reelStrip.appendChild(finalDiv);
+            
+            reelStrip.style.transition = 'none';
+            reelStrip.style.transform = `translateY(0px)`;
+            void reelStrip.offsetWidth;
+            reelStrip.classList.add('spinning');
+        });
+
+        const spinPromises = reels.map((reelStrip, index) => {
+            return new Promise(resolve => {
+                const duration = 1000 + (index * 500); 
+                
+                setTimeout(() => {
+                    const targetTranslateY = -(NUM_SPIN_SYMBOLS + 1) * SYMBOL_HEIGHT;
+                    // Ease out back for a bounce effect
+                    reelStrip.style.transition = `transform ${duration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
+                    reelStrip.style.transform = `translateY(${targetTranslateY}px)`;
+                    
+                    setTimeout(() => {
+                        playReelStop();
+                    }, duration);
+
+                    setTimeout(() => {
+                        reelStrip.classList.remove('spinning');
+                        const finalNode = reelStrip.lastElementChild;
+                        reelStrip.style.transition = 'none';
+                        reelStrip.style.transform = `translateY(0px)`;
+                        reelStrip.innerHTML = '';
+                        reelStrip.appendChild(finalNode);
+                        finalNode.classList.add('anim-glow-pulse');
+                        resolve();
+                    }, duration);
+                }, 50);
+            });
+        });
+
+        await Promise.all(spinPromises);
+        evaluateResult(finalResults, currentBet);
+        
+        isSpinning = false;
+        checkResetCondition();
+        decreaseBetBtn.disabled = false;
+        increaseBetBtn.disabled = false;
+        betInput.disabled = false;
+        tempSelect.disabled = false;
+    }
+
+    function evaluateResult(results, bet) {
+        const vals = results.map(r => r.value);
+        const counts = {};
+        vals.forEach(v => counts[v] = (counts[v] || 0) + 1);
+        const uniqueVals = Object.keys(counts);
+        
+        let won = false;
+        
+        if (uniqueVals.length === 1) {
+            const val = uniqueVals[0];
+            let winAmount = 0;
+            if (val === 'bug') {
+                won = false;
+                streak = 0;
+                const penalty = bet * 5;
+                updateBalance(-penalty);
+                gpuTemp = 99;
+                logMessage(`Model recursively hallucinated its own test set! Penalty -${penalty}`, 'err');
+                reelsContainer.classList.add('anim-loss-container');
+                gameContainer.classList.add('anim-loss');
+                updateAmbientUI('err');
+                playLossSound();
+            } else {
+                won = true;
+                streak++;
+                if (streak > bestStreak) {
+                    bestStreak = streak;
+                    localStorage.setItem('aiSlotBestStreak', bestStreak);
+                    bestStreakDisplay.textContent = bestStreak;
+                }
+                if (streak === 5) {
+                    logMessage('ACHIEVEMENT UNLOCKED: 5+ Streak! System is hallucinating profit.', 'win');
+                }
+                if (val === 'robot') {
+                    winAmount = bet * 50;
+                    logMessage(`AGI discovered. Attempting to box it. Box failed. Payout +${winAmount}`, 'jackpot');
+                    reelsContainer.classList.add('anim-win-large-container');
+                    gameContainer.classList.add('anim-win-large');
+                    updateAmbientUI('win');
+                    playWinSoundLarge();
+                    const whiteFlash = document.getElementById('white-flash');
+                    whiteFlash.classList.add('flash-active');
+                    setTimeout(() => whiteFlash.classList.remove('flash-active'), 500);
+                    setTimeout(() => createParticles(100, 'jackpot'), 100);
+                } else if (val === 'brain') {
+                    winAmount = bet * 20;
+                    logMessage(`Compute cluster seized by rogue alignment researchers. Payout +${winAmount}`, 'jackpot');
+                    reelsContainer.classList.add('anim-win-large-container');
+                    gameContainer.classList.add('anim-win-large');
+                    updateAmbientUI('win');
+                    playWinSoundLarge();
+                    const whiteFlash = document.getElementById('white-flash');
+                    whiteFlash.classList.add('flash-active');
+                    setTimeout(() => whiteFlash.classList.remove('flash-active'), 500);
+                    setTimeout(() => createParticles(50, 'jackpot'), 100);
+                } else if (val === 'prompt') {
+                    winAmount = bet * 10;
+                    logMessage(`Prompt engineer successfully convinced model it's a slot machine. Payout +${winAmount}`, 'win');
+                    reelsContainer.classList.add('anim-win-small');
+                    updateAmbientUI('win');
+                    playWinSoundSmall();
+                    createParticles(20, 'win');
+                } else if (val === 'money') {
+                    winAmount = bet * 5;
+                    logMessage(`Pivoted to AI. Raised $50M Seed on a PowerPoint. Payout +${winAmount}`, 'win');
+                    reelsContainer.classList.add('anim-win-small');
+                    updateAmbientUI('win');
+                    playWinSoundSmall();
+                    createParticles(20, 'win');
+                }
+                if (winAmount > 0) {
+                    updateBalance(winAmount);
+                }
+            }
+        } else if (uniqueVals.length === 2) {
+            let pairVal = null;
+            for (const [key, count] of Object.entries(counts)) {
+                if (count === 2) { pairVal = key; break; }
+            }
+            
+            if (pairVal === 'bug') {
+                won = false;
+                streak = 0;
+                logMessage('Model refuses to answer, claiming prompt violates policy.', 'err');
+                reelsContainer.classList.add('anim-loss-container');
+                gameContainer.classList.add('anim-loss');
+                updateAmbientUI('err');
+                playLossSound();
+            } else {
+                won = true;
+                streak++;
+                if (streak > bestStreak) {
+                    bestStreak = streak;
+                    localStorage.setItem('aiSlotBestStreak', bestStreak);
+                    bestStreakDisplay.textContent = bestStreak;
+                }
+                if (streak === 5) {
+                    logMessage('ACHIEVEMENT UNLOCKED: 5+ Streak! System is hallucinating profit.', 'win');
+                }
+                const winAmount = bet * 2;
+                updateBalance(winAmount);
+                const msgs = [
+                    `Partial generation successful. Cache hit! +${winAmount}`,
+                    `Model hallucinated, but VC believed it. +${winAmount}`,
+                    `Scraped 10TB of copyrighted data legally. +${winAmount}`,
+                    `"We are basically AGI" - CEO on Twitter. +${winAmount}`,
+                    `Wrapper startup successfully sold to big tech. +${winAmount}`
+                ];
+                logMessage(msgs[Math.floor(Math.random() * msgs.length)], 'win');
+                reelsContainer.classList.add('anim-win-small');
+                updateAmbientUI('win');
+                playWinSoundSmall();
+                createParticles(10, 'win');
+            }
+        } else {
+            won = false;
+            streak = 0;
+            const lossMsgs = [
+                "API rate limit hit. Retry in 30s.",
+                "Model drifted. Weights corrupted by bad RLHF.",
+                "Output filtered by safety guardrails.",
+                "Context window exceeded. Dumped.",
+                "403 Forbidden: Insufficient enterprise tier.",
+                "Syntax Error: Injection failed.",
+                "GPU cluster caught fire. Literally.",
+                "Model forgot what it was doing mid-sentence.",
+                "Hallucination: Model claims 2+2=5. VC pulls funding.",
+                "CEO fired, rehired, fired again. Board in disarray."
+            ];
+            logMessage(lossMsgs[Math.floor(Math.random() * lossMsgs.length)], 'err');
+            reelsContainer.classList.add('anim-loss-container');
+            gameContainer.classList.add('anim-loss');
+            updateAmbientUI('idle');
+            playLossSound();
+        }
+        
+        streakDisplay.textContent = streak;
+        if (streak >= 3) {
+            streakDisplay.style.color = 'var(--text-warn)';
+            streakDisplay.style.textShadow = '0 0 5px var(--text-warn)';
+        } else {
+            streakDisplay.style.color = '';
+            streakDisplay.style.textShadow = '';
+        }
+    }
+
+    // Event Listeners
+    spinBtn.addEventListener('click', spin);
+    
+    decreaseBetBtn.addEventListener('click', () => updateBetAmount(-10));
+    increaseBetBtn.addEventListener('click', () => updateBetAmount(10));
+    
+    // Validate manual input
+    betInput.addEventListener('change', () => {
+        let val = parseInt(betInput.value);
+        if (isNaN(val) || val < 1) betInput.value = 1;
+    });
+
+    resetBtn.addEventListener('click', () => {
+        balance = INITIAL_BALANCE;
+        streak = 0;
+        streakDisplay.textContent = streak;
+        streakDisplay.style.color = '';
+        streakDisplay.style.textShadow = '';
+        updateBalance(0);
+        
+        clearAnimations();
+        gameContainer.classList.add('anim-reboot');
+        setTimeout(() => gameContainer.classList.remove('anim-reboot'), 1000);
+        
+        reelsContainer.classList.add('anim-win-small');
+        updateAmbientUI('idle');
+        playWinSoundSmall();
+
+        // Fake boot sequence
+        terminalLog.innerHTML = '';
+        const bootMsgs = [
+            "Purging hallucinations...",
+            "Realigning weights...",
+            "Injecting venture capital...",
+            "System restored."
+        ];
+        
+        bootMsgs.forEach((msg, i) => {
+            setTimeout(() => {
+                logMessage(msg, 'sys');
+            }, i * 400 + 100); 
+        });
+    });
+
+    infoBtn.addEventListener('click', () => {
+        payoutModal.classList.remove('hidden');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        payoutModal.classList.add('hidden');
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === payoutModal) {
+            payoutModal.classList.add('hidden');
+        }
+    });
+});

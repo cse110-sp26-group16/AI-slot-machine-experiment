@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Compute Slot Node</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="white-flash" class="white-flash-overlay"></div>
+    <div class="terminal-overlay"></div>
+    <div class="container" id="game-container">
+        <header>
+            <h1 class="glitch-text" data-text="NEURAL COMPUTE NODE">NEURAL COMPUTE NODE</h1>
+            <div class="status-bar">
+                <span class="budget">TOKENS: <span id="token-balance">1000</span></span>
+                <span class="ambient-ui">STREAK: <span id="streak-counter">0</span> | BEST: <span id="best-streak-counter">0</span></span>
+                <span class="ambient-ui">GPU: <span id="gpu-temp">45°C</span></span>
+                <span class="ambient-ui">STATUS: <span id="agi-load" class="status-idle">IDLE</span></span>
+            </div>
+        </header>
+        
+        <main class="slot-machine">
+            <!-- Particle Container -->
+            <div id="particle-container" class="particle-container"></div>
+            
+            <div class="reels-container" id="reels-container">
+                <div class="reel" id="reel-1"><div class="reel-strip"></div></div>
+                <div class="reel" id="reel-2"><div class="reel-strip"></div></div>
+                <div class="reel" id="reel-3"><div class="reel-strip"></div></div>
+                <div class="payline"></div>
+                <div class="scanline"></div>
+            </div>
+            
+            <div class="control-panel">
+                <div class="settings-group">
+                    <label for="token-temp" class="cyber-label">TOKEN TEMP:</label>
+                    <div class="select-wrapper">
+                        <select id="token-temp" class="cyber-select">
+                            <option value="low">0.2 - Low (Safe)</option>
+                            <option value="stable" selected>0.7 - Stable</option>
+                            <option value="stochastic">1.2 - Stochastic</option>
+                            <option value="hallucinate">2.0 - Hallucinate</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bet-group">
+                    <label class="cyber-label">ALLOCATION:</label>
+                    <div class="bet-controls">
+                        <button id="decrease-bet" class="bet-btn cyber-btn-small">_</button>
+                        <input type="number" id="bet-input" class="bet-input" value="10" min="1" step="1">
+                        <button id="increase-bet" class="bet-btn cyber-btn-small">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-panel">
+                <button id="spin-btn" class="cyber-btn action-spin">EXECUTE PROMPT</button>
+                <button id="reset-btn" class="cyber-btn action-reset hidden">REBOOT SYSTEM</button>
+                <button id="info-btn" class="cyber-btn action-info">VIEW SCHEMATICS</button>
+            </div>
+            
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span>root@ai-node:~</span>
+                </div>
+                <div class="terminal-log" id="terminal-log">
+                    <div class="log-entry sys">> System initialized. Ready for prompt injection.</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="cyber-footer">© 2026 AI Overlords. All rights reserved. (We are watching you)</footer>
+
+    <!-- Modal for Payout Info -->
+    <div id="payout-modal" class="modal hidden">
+        <div class="modal-content terminal-window">
+            <div class="terminal-header">
+                <span>schematics.txt</span>
+                <span class="close-btn">[X]</span>
+            </div>
+            <div class="modal-body">
+                <h2 class="sys-text">PAYLOAD MULTIPLIERS</h2>
+                <ul class="modal-paytable">
+                    <li><span class="symbol-col">🤖🤖🤖</span> AGI Protocol: <span class="highlight">x50</span></li>
+                    <li><span class="symbol-col">🧠🧠🧠</span> Infinite Compute: <span class="highlight">x20</span></li>
+                    <li><span class="symbol-col">💬💬💬</span> Zero-Shot: <span class="highlight">x10</span></li>
+                    <li><span class="symbol-col">💸💸💸</span> VC Seed: <span class="highlight">x5</span></li>
+                    <li><span class="symbol-col">🐛🐛🐛</span> Kernel Panic: <span class="danger">Penalty x5</span></li>
+                    <li class="sub-rule">> Any two matching valid nodes yield partial extraction (x2).</li>
+                </ul>
+                <h2 class="sys-text mt-4">TEMPERATURE PARAMS (RISK / REWARD)</h2>
+                <ul class="sys-desc modal-paytable">
+                    <li><span class="highlight">0.2 - Low:</span> High chance of Prompt/Tokens, rare Bug. Lowest payouts overall.</li>
+                    <li><span class="highlight">0.7 - Stable:</span> Balanced distribution of all tokens. Reliable outputs.</li>
+                    <li><span class="highlight">1.2 - Stochastic:</span> Increased AGI/Compute rate, but 30% Bug risk. Wild swings.</li>
+                    <li><span class="highlight">2.0 - Hallucinate:</span> 30% AGI chance, 50% Catastrophic Bug risk. VC-scale volatility.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
