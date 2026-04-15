@@ -1,129 +1,111 @@
-# Final Report — AI Slot Machine Experiment
+# Final Report -- AI Slot Machine Experiment
 
-## Experiment Overview
+## What We Did
 
-We used Gemini Code Assist (gemini-3.1-pro-preview) to generate a slot machine web app 50 times from an identical prompt, then refined the best candidates through 4 rounds of structured single-turn prompting. The goal was to measure variation, drift, and what constrained refinement actually buys.
+We gave Gemini Code Assist the same slot machine prompt 50 times, each in a clean session, and looked at what came back. Then we took the best ones and tried to improve them through 4 rounds of one-shot refinement prompts (max 200 words each, no editing by hand).
 
-**Model:** gemini-3.1-pro-preview (via Gemini Code Assist, Google One AI Pro tier)
-
+**Model:** gemini-3.1-pro-preview via Gemini Code Assist on Google One AI Pro  
 **Prompt:** "Create a slot machine app that uses vanilla web technology like HTML, CSS, JavaScript, and platform APIs. The slot machine should make fun of AI, as in you are winning tokens and spending tokens."
 
-## Phase 1 — Baseline (50 Runs)
+## 50 Baseline Runs
 
-### Consistency
+Every single run produced a working app. Three files every time -- HTML, CSS, JS. The model never failed to make something that opened in a browser. That part was boring in a good way.
 
-All 50 candidates ran in the browser. Every run produced a 3-file structure (HTML, CSS, JS). The model never failed to produce a runnable app — but "runnable" is a low bar.
-
-### Variation
-
-Despite identical prompts, output varied significantly:
+Everything else was a coin flip.
 
 | Metric | Range |
 |---|---|
-| Lines of code | ~260 – 803 (3x spread) |
-| Total tokens | ~14,500 – 147,700 (10x spread) |
-| Themes/names | Token Burner, Hallucination Engine, Neural Slots, Token Grinder, etc. |
+| Lines of code | 260 -- 803 (3x spread) |
+| Token usage | 14,500 -- 147,700 (10x spread) |
 
-- **Visual style** ranged from unstyled white pages to neon cyberpunk terminals. Many looked generic and "AI-generated."
-- **AI satire** was often shallow — most candidates just slapped AI-themed emoji labels on a standard slot machine. Only a handful had genuinely clever satire (fake GPU readouts, VC funding jokes, hallucination mechanics).
-- **Feature completeness** was inconsistent — some had adjustable bets and sound, others were bare-minimum spinners with hardcoded values.
-- **Code quality** was mediocre across the board. Most candidates had minimal or no comments, repetitive if/else chains, and no separation of concerns. The code works, but none of it would pass a serious code review.
+Some runs gave us a neon cyberpunk casino with sound effects and adjustable bets. Others gave us white backgrounds with emoji in boxes and nothing else. Same prompt both times.
 
-### Key Observation
+The "AI satire" part was usually weak. Most candidates just put robot emoji on the reels and called it a day. A few actually committed to the bit with fake GPU temperature readouts and VC funding jokes, but those were the exception.
 
-The model is reliable at producing *something that works*. It is unreliable at producing *something good*. Out of 50 runs, maybe 8-10 were worth keeping. The rest were functional but forgettable. You cannot ship a single run with confidence.
+Code quality was consistently mediocre. Lots of copy-paste if/else chains, almost no comments, no separation of concerns. It works, but you wouldn't want to maintain any of it.
 
-## Phase 2 — Refinement Rounds
+Out of 50, maybe 8-10 were worth a second look. The rest were forgettable.
 
-### Selection Funnel
+## Refinement Rounds
 
-| Step | Candidates | Selected | Prompt Focus |
+We picked the best candidates and ran them through 4 rounds of refinement. Each round, we wrote a new prompt (under 200 words), fed it with the code in a fresh session, and took whatever came back without touching it.
+
+| Step | Pool | Kept | What the prompt asked for |
 |---|---|---|---|
-| Step 1 → 2 | 50 → 5 | 8, 20, 24, 34, 45 | Casino visuals, animations, sound, bet adjustment, AI jokes |
-| Step 2 → 3 | 5 → 3 | 20, 24, 34 | Terminal aesthetic, TOKEN TEMP variance, paytable, scaled animations |
-| Step 3 → 4 | 3 → 2 | 24, 34 | Polish, particles, streak counter, more AI jokes, layered sound |
-| Step 4 → 5 | 2 → 1 | 34 | Glitch header, glow pulse, localStorage streak, ambient hum, boot sequence |
+| 1 to 2 | 50 to 5 | 8, 20, 24, 34, 45 | Casino visuals, animations, sound, bet controls, more AI jokes |
+| 2 to 3 | 5 to 3 | 20, 24, 34 | Terminal aesthetic, TOKEN TEMP as real game mechanic, paytable, scaled animations |
+| 3 to 4 | 3 to 2 | 24, 34 | Particles, streak counter, layered sound, glitch effects |
+| 4 to 5 | 2 to 1 | 34 | Glitch header, glow on land, localStorage streak, ambient hum, boot sequence |
 
-### What Refinement Improved
+### What got better
 
-Each round added features when it worked:
-- Step 2 added casino mechanics: adjustable bets, sound effects, win/loss animations, paytable
-- Step 3 added cohesion: consistent terminal aesthetic, TOKEN TEMP controlling actual game variance
-- Step 4 added particles, streak counter, more varied AI satire messages, glitch/static effects
-- Step 5 added final polish: glitch header animation, glow pulse on landing, localStorage persistence, ambient hum, fake boot sequence
+Refinement did add real features when it worked. By the end, candidate 034 had particles, a streak counter, sound layering, a fake terminal boot sequence, and a TOKEN TEMP dropdown that actually changed the probability distribution. None of that existed in the baseline.
 
-However, much of this is surface-level. The underlying game logic barely changed across refinements — it's still a random number generator with emoji. The refinement prompts could add visual polish but couldn't fundamentally improve the game design within the 200-word constraint.
+But most of this was cosmetic. The game logic underneath barely changed across 4 rounds. It's still a random number generator with emoji. The prompts were good at asking for visual polish and bad at improving how the thing actually works.
 
-### What Refinement Broke
+### What broke
 
-**Candidate 024 broke in Step 4.** The same prompt that successfully refined 034 caused 024 to:
-- Reference a `streakDisplay` variable that was never declared or added to HTML
-- Output duplicate code at the end of the file
-- Render an empty UI where the spin button does nothing
+Candidate 024 died in Step 4. The exact same prompt that worked fine on 034 broke 024 completely. The model added a streak counter to the JavaScript but never created the HTML element for it or the variable to reference it. The app loads, the reels are empty, the spin button does nothing.
 
-This is the most critical finding: **refinement is not safe.** A fully working app became non-functional in one turn. The model added streak tracking logic to the JS but forgot to create the HTML element or DOM query for it. This is a classic AI coding failure — partial implementation that silently breaks.
+This was the most useful thing we learned. Refinement can make things worse. A working app became a broken app in one turn, and the model didn't notice or say anything about it.
 
-### Refinement Ceiling
+### Where it stops helping
 
-By Step 5, prompts were focused on micro-polish (glitch animations, ambient hum, localStorage). The 200-word constraint limits each round to 3-5 items. Anything architectural — better game design, responsive layout, accessibility, proper error handling — was never feasible. The tool is good at adding decorative features, not at improving software quality.
+By Step 5 we were asking for things like ambient hum and glitch animations. The 200-word limit means you can only fit 3-5 requests per prompt. Anything bigger -- responsive layout, accessibility, better architecture -- was never realistic within the constraint. You run out of room to ask for meaningful improvements pretty fast.
 
-## Final Candidate — Candidate 034
+## The Final Product
 
-**"Neural Compute Node"** — a green terminal/hacker-themed AI slot machine.
+Candidate 034, "Neural Compute Node." Green terminal aesthetic, hacker theme.
 
-### What Works
-- Cohesive terminal aesthetic maintained across all refinements
-- TOKEN TEMP selector that actually controls probability distributions (not just cosmetic)
-- Good variety of AI satire messages in the terminal log
-- Particle system, glitch effects, and sound create a polished feel
-- BEST STREAK via localStorage is a nice touch
+**What works:**
+- TOKEN TEMP selector that changes actual probability weights, not just a label
+- Terminal log with 15+ AI satire messages (some are genuinely funny)
+- Particles and screen shake scaled to win size
+- Best streak persists in localStorage
+- Fake boot sequence when you reset
+- Sound effects for everything via Web Audio API
+- CRT scanline overlay and glitch text on the header
 
-### What Doesn't Work Well
-- Still fundamentally emoji in boxes — the "slot machine" feel is limited by using text characters as symbols
-- No bet validation against balance (you can type any number)
-- The ambient hum oscillator is never cleaned up — runs indefinitely
-- CSS uses deprecated `clip` property instead of `clip-path`
-- The `@font-face` for 'Terminus' doesn't load anything — just falls back to Courier New
-- Duplicate best-streak update logic in two code paths instead of a shared function
-- No accessibility considerations whatsoever (no ARIA labels, keyboard navigation is poor)
-- Not responsive — breaks on mobile viewports
+**What doesn't:**
+- The symbols are still just emoji in boxes. It looks like a slot machine the way a terminal looks like a computer -- thematically, not literally.
+- You can type any number into the bet field. No validation against your balance.
+- The ambient hum oscillator runs forever once started. Never gets cleaned up.
+- CSS uses the deprecated `clip` property for the glitch animation instead of `clip-path`
+- There's a `@font-face` declaration for "Terminus" that doesn't load any font. It just falls back to Courier New.
+- Best-streak update logic is copy-pasted in two places instead of being one function
+- Zero accessibility. No ARIA labels, keyboard nav is poor.
+- Not responsive. Breaks on mobile.
 
-### Code Stats Across Refinements
+### Growth across refinements
 
-| Step | LOC | Tokens Used | Working? |
+| Step | Lines of code | Tokens used | Worked? |
 |---|---|---|---|
-| Step 1 (baseline) | 528 | 67,052 | Yes |
-| Step 2 (refinement 1) | ~600 | — | Yes |
-| Step 3 (refinement 2) | ~1109 | — | Yes |
-| Step 4 (refinement 3) | 1109 | 284,375 | Yes |
-| Step 5 (refinement 4) | 1296 | 91,712 | Yes |
+| Baseline | 528 | 67,052 | Yes |
+| Refinement 1 | ~600 | -- | Yes |
+| Refinement 2 | ~1,109 | -- | Yes |
+| Refinement 3 | 1,109 | 284,375 | Yes |
+| Refinement 4 | 1,296 | 91,712 | Yes |
 
-034 survived all 4 refinement rounds without breaking — but that's a sample size of one. We cannot conclude it's inherently more robust; 024 broke from the same prompt.
+034 survived all 4 refinement rounds. But so did 024 until round 3, so survival isn't something you can count on.
 
-## Performance Observations (Gemini)
+## Gemini as a Tool
 
-| Metric | Observation |
+| | |
 |---|---|
-| Wall-clock time | 8–50 minutes per refinement run |
-| API error rate | 53–69% of requests were errors/retries |
-| Agent active vs wall time | Often less than half (significant idle/retry time) |
-| Output quality | Functional when it succeeds, but fragile under refinement |
+| Wall-clock time per run | 8--50 minutes |
+| API error rate | 53--69% of requests failed and retried |
+| Active time vs wall time | Often under half |
 
-The model's reliability was poor. Over half of API requests failed and had to be retried internally. A refinement that should take minutes routinely took 20–50 minutes. This is not a tool you'd use under time pressure with confidence.
+More than half the API requests failed. A refinement that should take a few minutes regularly took 20-50 minutes because of retries. One session hit 50 minutes of wall time for 8 minutes of actual work.
 
-## Conclusions
+## What We Learned
 
-### How consistent is the output from identical inputs?
-Structurally consistent (always valid HTML/CSS/JS), creatively inconsistent. LOC ranged 3x, token usage ranged 10x, and quality ranged from "barely acceptable" to "genuinely impressive." You cannot predict what you'll get from any single run.
+**How consistent is the output?** Structurally, very. You always get a working HTML/CSS/JS app. Quality-wise, not at all. Lines of code varied 3x, token cost varied 10x, and the difference between the best and worst run was enormous. You can't trust a single run.
 
-### What does drift look like in practice?
-Not outright failures — but a wide quality bell curve where most output clusters around "mediocre." The tail ends (both good and bad) are where interesting things happen. Drift manifests as feature presence/absence, visual polish, and satire depth — not as structural divergence.
+**What does drift look like?** Not broken code. Just a wide spread. Most runs land somewhere in the middle -- functional, boring, forgettable. The interesting ones are at the tails. You have to generate a bunch and pick.
 
-### What does a single refinement turn realistically improve?
-It can add 2-4 concrete features per turn. But it can also break existing functionality with no warning. Refinement is additive *on average* but not *guaranteed* to be. One of our two finalists broke from a single refinement pass.
+**What does refinement buy you?** 2-4 features per turn, mostly visual. It can also break what you already have. One of our two finalists was killed by a refinement prompt. It's additive on average, but not on any given attempt.
 
-### Where does simple prompting hit a ceiling?
-Immediately, if you care about code quality. The generated code consistently lacks error handling, accessibility, responsive design, and clean architecture. Refinement prompts can add features and visual polish, but they don't improve the underlying code quality. By Step 4-5, you're decorating a house built on a slab — the foundation isn't going to get better.
+**Where does prompting hit a wall?** Fast. By round 4 we were out of meaningful things to ask for within 200 words. The tool is good at adding surface polish. It does not improve code quality, architecture, accessibility, or error handling unless you specifically ask, and even then results are hit-or-miss.
 
-### How would you talk about these tools honestly?
-They're useful for generating a starting point quickly — you get a working prototype in seconds. But the output requires significant human judgment to evaluate and is not production-ready by any standard. You need multiple runs to find a good one, careful evaluation to pick winners, and acceptance that refinement might break what you have. These tools do not replace engineering skill; they replace the blank page.
+**Bottom line:** These tools replace the blank page. They don't replace the person who has to read what came out and decide if it's any good.
