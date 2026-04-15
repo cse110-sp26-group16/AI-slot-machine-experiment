@@ -1,10 +1,10 @@
-# candidate-ai-satire metrics
+# candidate-025 metrics
 
 | Field | Notes |
 |---|---|
-| Run ID | candidate-ai-satire |
+| Run ID | candidate-025 |
 | Timestamp | 2026-04-14T10:30:00-07:00 |
-| Model + version string | gemini-3-flash-preview |
+| Model + version string | gemini-3.1-pro-preview |
 | Input tokens | 64,719  |
 | Output tokens |  6,400 |
 | Total tokens | 71,119 |

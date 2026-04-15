@@ -2,7 +2,7 @@
 | --- | --- |
 | Run ID | candidate-021 |
 | Timestamp | 2026-04-13 |
-| Model + version | gemini-3-flash-preview |
+| Model + version | gemini-3.1-pro-preview |
 | Input tokens | 45,003 |
 | Output tokens | 5,890 |
 | Total tokens | 50,893 |

@@ -1,7 +1,7 @@
 # candidate-gemini metrics
 | Field | Notes |
 |---|---|
-| Run ID | candidate-024-refinement-4 |
+| Run ID | candidate-024-refinement-3 |
 | Timestamp | 2026-04-14 |
 | Model + version string | gemini-3.1-pro-preview |
 | Input tokens | 70,203 |
