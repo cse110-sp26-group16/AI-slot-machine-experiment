@@ -1,4 +1,4 @@
-# Step 3 Results -- Refinement Round 2 (3 to 2)
+# Step 3 Results - Refinement Round 2 (3 to 2)
 
 ## Candidates Evaluated
 

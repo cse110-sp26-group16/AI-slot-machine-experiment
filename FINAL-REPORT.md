@@ -1,4 +1,4 @@
-# Final Report -- AI Slot Machine Experiment
+# Final Report - AI Slot Machine Experiment
 
 ## What We Did
 
@@ -9,14 +9,14 @@ We gave Gemini Code Assist the same slot machine prompt 50 times, each in a clea
 
 ## 50 Baseline Runs
 
-Every single run produced a working app. Three files every time -- HTML, CSS, JS. The model never failed to make something that opened in a browser. That part was boring in a good way.
+Every single run produced a working app. Three files every time: HTML, CSS, JS. The model never failed to make something that opened in a browser. That part was boring in a good way.
 
 Everything else was a coin flip.
 
 | Metric | Range |
 |---|---|
-| Lines of code | 260 -- 803 (3x spread) |
-| Token usage | 14,500 -- 147,700 (10x spread) |
+| Lines of code | 260 to 803 (3x spread) |
+| Token usage | 14,500 to 147,700 (10x spread) |
 
 Some runs gave us a neon cyberpunk casino with sound effects and adjustable bets. Others gave us white backgrounds with emoji in boxes and nothing else. Same prompt both times.
 
@@ -51,7 +51,7 @@ This was the most useful thing we learned. Refinement can make things worse. A w
 
 ### Where it stops helping
 
-By Step 5 we were asking for things like ambient hum and glitch animations. The 200-word limit means you can only fit 3-5 requests per prompt. Anything bigger -- responsive layout, accessibility, better architecture -- was never realistic within the constraint. You run out of room to ask for meaningful improvements pretty fast.
+By Step 5 we were asking for things like ambient hum and glitch animations. The 200-word limit means you can only fit 3-5 requests per prompt. Anything bigger (responsive layout, accessibility, better architecture) was never realistic within the constraint. You run out of room to ask for meaningful improvements pretty fast.
 
 ## The Final Product
 
@@ -67,7 +67,7 @@ Candidate 034, "Neural Compute Node." Green terminal aesthetic, hacker theme.
 - CRT scanline overlay and glitch text on the header
 
 **What doesn't:**
-- The symbols are still just emoji in boxes. It looks like a slot machine the way a terminal looks like a computer -- thematically, not literally.
+- The symbols are still just emoji in boxes. It looks like a slot machine the way a terminal looks like a computer: thematically, not literally.
 - You can type any number into the bet field. No validation against your balance.
 - The ambient hum oscillator runs forever once started. Never gets cleaned up.
 - CSS uses the deprecated `clip` property for the glitch animation instead of `clip-path`
@@ -81,8 +81,8 @@ Candidate 034, "Neural Compute Node." Green terminal aesthetic, hacker theme.
 | Step | Lines of code | Tokens used | Worked? |
 |---|---|---|---|
 | Baseline | 528 | 67,052 | Yes |
-| Refinement 1 | ~600 | -- | Yes |
-| Refinement 2 | ~1,109 | -- | Yes |
+| Refinement 1 | ~600 | N/A | Yes |
+| Refinement 2 | ~1,109 | N/A | Yes |
 | Refinement 3 | 1,109 | 284,375 | Yes |
 | Refinement 4 | 1,296 | 91,712 | Yes |
 
@@ -92,8 +92,8 @@ Candidate 034, "Neural Compute Node." Green terminal aesthetic, hacker theme.
 
 | | |
 |---|---|
-| Wall-clock time per run | 8--50 minutes |
-| API error rate | 53--69% of requests failed and retried |
+| Wall-clock time per run | 8 to 50 minutes |
+| API error rate | 53 to 69% of requests failed and retried |
 | Active time vs wall time | Often under half |
 
 More than half the API requests failed. A refinement that should take a few minutes regularly took 20-50 minutes because of retries. One session hit 50 minutes of wall time for 8 minutes of actual work.
@@ -102,7 +102,7 @@ More than half the API requests failed. A refinement that should take a few minu
 
 **How consistent is the output?** Structurally, very. You always get a working HTML/CSS/JS app. Quality-wise, not at all. Lines of code varied 3x, token cost varied 10x, and the difference between the best and worst run was enormous. You can't trust a single run.
 
-**What does drift look like?** Not broken code. Just a wide spread. Most runs land somewhere in the middle -- functional, boring, forgettable. The interesting ones are at the tails. You have to generate a bunch and pick.
+**What does drift look like?** Not broken code. Just a wide spread. Most runs land somewhere in the middle: functional, boring, forgettable. The interesting ones are at the tails. You have to generate a bunch and pick.
 
 **What does refinement buy you?** 2-4 features per turn, mostly visual. It can also break what you already have. One of our two finalists was killed by a refinement prompt. It's additive on average, but not on any given attempt.
 
